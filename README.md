@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+![名称未設定ファイル drawio](https://github.com/Takettt/game_community/assets/145350221/9e0f9ae4-6e21-4877-89d9-ab33e7b9a5ad)
