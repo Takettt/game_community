@@ -1,24 +1,42 @@
-# README
+game_community
+​
+## サイト概要
+### サイトテーマ
+気の合う、時間帯の合うゲーム友達がつながれるコミュニティーサイト
+​
+### テーマを選んだ理由
+小さい頃からゲームが好きでたくさんのゲームをしてきました。最近はオンラインゲーム
+にはまっていて大学の友達とずっとプレイをしていたのですが、社会人になって、仕事で
+疲れた後にその友達とゲームをしたときに高いテンションについていけませんでした。
+（休みの日はついていける）さらに、自分だけは次の日が早くて、自分だけが休みが被ら
+ないことが多々あり、仕方ないのですが仲間外れにされた気持ちになってしまいました。
+その経験があり、様々な生活スタイル（学生、社会人、フリーターなど）にマッチした人
+同士を繋げたいという思いがありこのテーマを選びました。
+​
+### ターゲットユーザ
+・テンションや、ゲームをする時間帯が合う人を探している人
+・ゲーム仲間が欲しい人
+​
+### 主な利用シーン
+・気のあうゲーム仲間が欲しいとき
+・仕事や学校で疲れたので静かにゲームをしたい人
+・盛り上がりながらゲームをしたい人
+・少しの時間帯だけゲーム仲間が欲しいとき
+・たくさんの時間帯ゲーム仲間が欲しいとき
+​
+## 設計書
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+https://illustman.net/?p=7760
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+折りたたむ
