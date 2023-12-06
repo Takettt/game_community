@@ -1,0 +1,11 @@
+<header>
+   <% if player_signed_in? %>
+    <%= link_to destroy_player_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
+      <i class="fas fa-sign-out-alt"></i> ログアウト
+    <% end %>
+    <% else %>
+    <%= link_to new_player_session_path, class: 'nav-link font-weight-bolder' do %>
+       <i class="fas fa-sign-in-alt"></i> ログイン
+     <% end %>
+     <% end %>
+</header>

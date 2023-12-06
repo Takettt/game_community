@@ -1,0 +1,2 @@
+class GroupPlayer < ApplicationRecord
+end
