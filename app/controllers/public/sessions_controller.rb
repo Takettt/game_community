@@ -18,10 +18,20 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+   protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  
+  
+   def customer_state
+    player = Player.find_by(email: params[:player][:email])
+    return if player.nil?
+    return unless player.valid_password?(params[:player][:password])
+    return if player.is_active
+    flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+    redirect_to new_player_session_path
+   end
 end

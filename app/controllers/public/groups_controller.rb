@@ -10,6 +10,12 @@ class Public::GroupsController < ApplicationController
 
   def update
   end
+  
+  def show
+  end
+  
+  def index
+  end
 
   def destroy
   end

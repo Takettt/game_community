@@ -1,2 +1,7 @@
-<h1>Public::Players#show</h1>
-<p>Find me in app/views/public/players/show.html.erb</p>
+<h1>マイページ</h1>
+
+<%= @player_nickname %>
+<%= @player_platform %>
+<%= @player_addicted_game %>
+<%= @player_play_style %>
+<%= link_to "プロフィールを編集する", public_player_path(@player.id) %>

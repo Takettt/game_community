@@ -14,12 +14,22 @@
 
     <tr>
      <td>ニックネーム</td>
-     <td><%= f.text_field :last_name, autofocus: true %></td>
+     <td><%= f.text_field :nickname, autofocus: true %></td>
     </tr>
 
     <tr>
       <td>メールアドレス</td>
       <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+    
+    <tr>
+     <td>プラットフォーム</td>
+     <td><%= f.text_field :platform, autofocus: true %></td>
+    </tr>
+    
+    <tr>
+     <td>はまっているゲーム</td>
+     <td><%= f.text_field :addicted_game, autofocus: true %></td>
     </tr>
 
     <tr>

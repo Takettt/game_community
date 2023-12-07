@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
 
   namespace :public do
+
+
     root to: "homes#top"
     get 'about'=>"homes#about",as: "about"
 
@@ -21,9 +23,17 @@ Rails.application.routes.draw do
 
     get 'players/confirm' , to:'players#confirm'
     patch 'players/leave' , to:'players#leave'
-    resources :players, only:[:show, :edit, :update]
+    get 'players/my_page', to: 'players#show'
+    get 'players/information/edit', to:'players#edit'
+    patch 'players/information' , to:'players#update'
 
-    resources :groups, only:[:new, :create, :edit, :update, :destroy]
+   post 'posts/confirm' , to:'posts#confirm'
+   get 'posts/completion' , to:'posts#completion'
+   get 'posts/information/edit', to:'posts#edit'
+   patch 'posts/information' , to:'posts#update'
+   resources :posts, only:[:new, :create, :index, :show, :destroy]
+
+    resources :groups, only:[:new, :create, :edit, :update, :show, :index, :destroy]
 
     resources :comments, only:[:create, :destroy]
 

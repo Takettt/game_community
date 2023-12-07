@@ -41,7 +41,7 @@ class DeviseCreatePlayers < ActiveRecord::Migration[6.1]
       t.boolean :is_active, null: false, default: true
       t.timestamps null: false
     end
-
+    
     add_index :players, :email,                unique: true
     add_index :players, :reset_password_token, unique: true
     # add_index :customers, :confirmation_token,   unique: true
