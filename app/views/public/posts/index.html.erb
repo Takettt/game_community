@@ -1,0 +1,21 @@
+<h1>今までの募集一覧</h1>
+
+<%= @posts.each do |posts|%>
+<table>
+  <tr>
+    <th>募集日</th>
+    <td class="table-light"><%= @posts.created_at.strftime('%Y/%m/%d') %></td>
+  </tr>
+   <tr>
+    <th>ゲーム名</th>
+    <td class="table-light"><%= game_name %></td>
+  </tr>
+   <tr>
+    <th>コメント数</th>
+    <td><%= book.book_comments.count %></td>
+  </tr>
+   <tr>
+    <th>詳細へ</th>
+    <td></td>
+  </tr>
+</table>

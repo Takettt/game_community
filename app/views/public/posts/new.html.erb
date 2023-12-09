@@ -1,0 +1,52 @@
+<h1>今すぐゲーム募集をしよう！</h1>
+
+
+<%= form_with model: @post, url: public_posts_confirm_path, method: :post do |f| %>
+  <table>
+    <tr>
+      <th>ゲーム名</th>
+      <td><%= f.text_field :game_name, autofocus:true %></td>
+    </tr>
+
+    <tr>
+      <th>募集人数</th>
+      <td><%= f.number_field :participate_number, min:1, max:10 %></td>
+    </tr>
+
+    <tr>
+      <th>始める時間</th>
+      <td>
+        <div class="input-group date datetimepicker">
+          <%= f.text_field :start_time, class:"form-control" %>
+          <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </td>
+    </tr>
+
+     <tr>
+      <th>終わる時間</th>
+      <td>
+        <div class="input-group date datetimepicker">
+          <%= f.text_field :ending_time, class:"form-control" %>
+          <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </td>
+    </tr>
+
+     <tr>
+      <th>今日のテンション</th>
+      <td><%= f.select :today_tension, options_for_select([["とても元気","very_well" ], ["元気","fine" ],  ["普通","usually" ], ["疲れた","tired" ]]) %></td>
+    </tr>
+
+    <tr>
+      <th>ひとこと</th>
+      <td><%= f.text_area :content %></td>
+    </tr>
+
+  </table>
+  <%= f.submit "確認画面へ" %>
+<% end %>

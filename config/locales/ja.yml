@@ -1,0 +1,20 @@
+ja:
+  enums:
+    player:
+      play_style:
+        enjoy: "エンジョイ"
+        kill_move: "キルムーブ"
+        rank_priority: "順位優先"
+        hide: "ハイド"
+    post:
+      today_tension:
+        very_well: "とても元気"
+        fine: "元気"
+        usually: "普通"
+        tired: "疲れた"
+
+    group_approval:
+      status:
+        applying: "申請中"
+        approval: "承認"
+        reject: "却下"

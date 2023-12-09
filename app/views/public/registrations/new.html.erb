@@ -21,15 +21,20 @@
       <td>メールアドレス</td>
       <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
     </tr>
-    
+
     <tr>
      <td>プラットフォーム</td>
      <td><%= f.text_field :platform, autofocus: true %></td>
     </tr>
-    
+
     <tr>
      <td>はまっているゲーム</td>
      <td><%= f.text_field :addicted_game, autofocus: true %></td>
+    </tr>
+
+    <tr>
+     <td>ゲーム楽しみ方</td>
+     <td><%= f.select :play_style, options_for_select([["エンジョイ","enjoy" ], ["キルムーブ","kill_move" ],  ["順位優先","rank_priority" ], ["ハイド","hide" ]]) %></td>
     </tr>
 
     <tr>

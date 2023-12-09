@@ -12,11 +12,12 @@ Rails.application.routes.draw do
 
 
   namespace :public do
-
-
-    root to: "homes#top"
+    root to: "public/sessions#new"
+    get 'top' => "homes#top"
     get 'about'=>"homes#about",as: "about"
 
+    post 'calendars/confirm' , to:'calendars#confirm'
+    get 'calendars/completion' , to:'calendars#completion'
     resources :calendars, only:[:new, :create, :edit, :update, :destroy]
 
     resources :group_approvals, only:[:new, :create]
@@ -29,9 +30,7 @@ Rails.application.routes.draw do
 
    post 'posts/confirm' , to:'posts#confirm'
    get 'posts/completion' , to:'posts#completion'
-   get 'posts/information/edit', to:'posts#edit'
-   patch 'posts/information' , to:'posts#update'
-   resources :posts, only:[:new, :create, :index, :show, :destroy]
+   resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy]
 
     resources :groups, only:[:new, :create, :edit, :update, :show, :index, :destroy]
 
