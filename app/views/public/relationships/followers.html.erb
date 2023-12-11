@@ -1,0 +1,21 @@
+<h2>フォロワー一覧</h2>
+<% if @players.exists? %>
+<table>
+  <tr>
+    <th>ニックネーム</th>
+    <th>プラットフォーム</th>
+    <th>はまっているゲーム</th>
+    <th>プレイスタイル</th>
+  </tr>
+<% @players.each do |player|%>
+  <tr>
+    <td><%= player.nickname %></td>
+    <td><%= player.flatform %></td>
+    <td><%= player.addicted_game %></td>
+    <td><%= player.play_style %></td>
+  </tr>
+  <% end %>
+</table>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

@@ -24,19 +24,22 @@ Rails.application.routes.draw do
 
     get 'players/confirm' , to:'players#confirm'
     patch 'players/leave' , to:'players#leave'
-    get 'players/my_page', to: 'players#show'
-    get 'players/information/edit', to:'players#edit'
-    patch 'players/information' , to:'players#update'
+    resources :players, only:[:show, :index, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      	get "followings" => "relationships#followings", as: "followings"
+  	    get "followers" => "relationships#followers", as: "followers"
+      end
 
    post 'posts/confirm' , to:'posts#confirm'
    get 'posts/completion' , to:'posts#completion'
-   resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy]
-
-    resources :groups, only:[:new, :create, :edit, :update, :show, :index, :destroy]
-
+   resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
     resources :comments, only:[:create, :destroy]
+    resource :favorites, only:[:create, :destroy]
+   end
 
-    resources :favorites, only:[:create, :destroy]
+   resources :groups, only:[:new, :create, :edit, :update, :show, :index, :destroy]
+
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

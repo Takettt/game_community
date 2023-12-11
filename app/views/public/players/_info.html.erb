@@ -1,0 +1,20 @@
+<table>
+<tr>
+    <th>follows</th>
+    <th><%= link_to player.followings.count, public_player_followings_path(player) %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th><%= link_to user.followers.count, public_player_followers_path(player) %></th>
+</tr>
+</table>
+
+<div class="row">
+  <% if current_player != player %>
+    <td><%= render "relationships/btn", player: player, options: { class: ""} %></td>
+  <% else %>
+    <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  <% end %>
+</div>

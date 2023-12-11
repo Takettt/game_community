@@ -1,2 +1,25 @@
-<h1>Public::Players#edit</h1>
+<h1>プレイヤー編集</h1>
+
+<%= form_with model: @player, url: public_player_path, method: :patch do |f| %>
+<table>
+  <tr>
+    <th>ニックネーム</th>
+    <td><%= f.text_field :nickname %></td>
+  </tr>
+  <tr>
+    <th>プラットフォーム</th>
+    <td><%= f.text_field :platform %></td>
+  </tr>
+  <tr>
+    <th>よくやるゲーム</th>
+    <td> <%= f.text_field :addicted_game %></td>
+ </tr>
+ <tr>
+    <th>ゲームの楽しみ方</th>
+    <td><%= f.select :play_style, options_for_select([["エンジョイ","enjoy" ], ["キルムーブ","kill_move" ],  ["順位優先","rank_priority" ], ["ハイド","hide" ]]) %></td>
+  </tr>
+</table>
+<%= f.submit "確定する" %>
+<% end %>
+
 <%= link_to "退会する", public_players_confirm_path %>

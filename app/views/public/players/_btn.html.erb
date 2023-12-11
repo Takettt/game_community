@@ -1,0 +1,7 @@
+<% if current_player != player %>
+  <% if current_player.following?(player) %>
+    <%= link_to "フォロー外す",public_player_relationships_path(player.id), method: :delete, class: options[:class].presence || "btn btn-info" %>
+  <% else %>
+    <%= link_to "フォローする",public_player_relationships_path(player.id), method: :post, class: options[:class].presence || "btn btn-success" %>
+  <% end %>
+<% end %>

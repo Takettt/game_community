@@ -10,4 +10,8 @@ class Post < ApplicationRecord
   validates :ending_time,presence: true
   validates :today_tension,presence: true
   validates :content,presence: true
+  
+  def favorited_by?(player)
+    favorites.exists?(player_id: player.id)
+  end
 end

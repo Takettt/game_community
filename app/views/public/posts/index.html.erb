@@ -8,14 +8,28 @@
   </tr>
    <tr>
     <th>ゲーム名</th>
-    <td class="table-light"><%= game_name %></td>
+    <td class="table-light"><%= @posts.game_name %></td>
   </tr>
    <tr>
     <th>コメント数</th>
-    <td><%= book.book_comments.count %></td>
+    <td> <% if @posts.favorited_by?(current_user) %>
+    <p>
+      <%= link_to public_post_favorites_path(@posts), method: :delete do %>
+        ♥<%= @posts.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to public_post_favorites_path(@posts), method: :post do %>
+        ♡<%= @posts.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+  </td>
   </tr>
    <tr>
     <th>詳細へ</th>
     <td></td>
   </tr>
 </table>
+<% end %>

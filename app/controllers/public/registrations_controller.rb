@@ -40,7 +40,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   protected
   def after_sign_up_path_for(resource)
-    public_root_path
+   public_top_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

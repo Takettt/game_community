@@ -21,7 +21,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(player_id:[current_player.id])
+    @posts = Post.where(current_player.id)
   end
 
   def show

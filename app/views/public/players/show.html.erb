@@ -1,7 +1,15 @@
-<h1>マイページ</h1>
+<h1><%= @player.nickname %>さんのページ</h1>
 
-<%= @player_nickname %>
-<%= @player_platform %>
-<%= @player_addicted_game %>
-<%= @player_play_style %>
+<%= @player.platform %>
+<%= @player.addicted_game %>
+<%= @player.play_style %>
 <%= link_to "プロフィールを編集する", public_player_path(@player.id) %>
+
+ <td><%= link_to public_player_followings_path(@player) do %>
+ フォロー数<%= @player.followings.count %>人
+ <% end %>
+ </td>
+ <td><%= link_to public_player_followers_path(@player) do %>
+ フォロワー数<%= @player.followers.count %>人
+ <% end %>
+ </td>
