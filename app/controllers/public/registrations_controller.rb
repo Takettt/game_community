@@ -67,7 +67,5 @@ class Public::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys:[:last_name, :first_name, :nickname, :email, :postcode, :platform, :addicted_game, :play_style])
   end
 
-  def after_sign_out_path_for(resource)
-    new_player_registration_path
-  end
+  resource.profile_image.attach(io: File.open(Rails.root.join('app/assets/images/no_image.jpg')), filename: 'profile_image.jpeg')
 end

@@ -1,0 +1,37 @@
+<h1>検索結果</h1>
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "Player" %>
+    <tbody>
+      <% @player.each do |player| %>
+        <tr>
+          <th>ニックネーム</th>
+          <td><%= player.nickname %></td>
+        </tr>
+        <tr>
+          <th>プラットフォーム</th>
+          <td><%= player.platform%></td>
+        </tr>
+         <tr>
+          <th>はまっているゲーム</th>
+          <td><%= player.addicted_game %></td>
+        </tr>
+        <tr>
+          <th>ゲームの楽しみ方</th>
+          <td><%= player.play_style %></td>
+        </tr>
+       
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.game_name %></td>
+          <td><%= post.today_tension %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

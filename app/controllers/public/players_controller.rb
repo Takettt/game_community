@@ -1,7 +1,6 @@
 class Public::PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
-    
   end
 
   def index
@@ -19,6 +18,12 @@ class Public::PlayersController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def favorites
+    @player = Player.find(params[:id])
+    @player_favorite = Favorite.where(player_id: @player.id).pluck(:post_id)
+    @favorite_posts = Post.find(@player_favorite)
   end
 
   def confirm

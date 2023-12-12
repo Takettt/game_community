@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-
-
   namespace :public do
+    post 'end_player/guest_sign_in', to: 'public/sessions#guest_sign_in'
     root to: "public/sessions#new"
+    get "search" => "searches#search"
     get 'top' => "homes#top"
     get 'about'=>"homes#about",as: "about"
 
@@ -25,6 +25,11 @@ Rails.application.routes.draw do
     get 'players/confirm' , to:'players#confirm'
     patch 'players/leave' , to:'players#leave'
     resources :players, only:[:show, :index, :edit, :update] do
+
+      member do
+       get :favorites
+      end
+
       resource :relationships, only: [:create, :destroy]
       	get "followings" => "relationships#followings", as: "followings"
   	    get "followers" => "relationships#followers", as: "followers"

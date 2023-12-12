@@ -1,34 +1,37 @@
 <h1>今までの募集一覧</h1>
 
-<%= @posts.each do |posts|%>
+<% @posts.each do |posts|%>
 <table>
   <tr>
     <th>募集日</th>
-    <td class="table-light"><%= @posts.created_at.strftime('%Y/%m/%d') %></td>
+    <td class="table-light"><%= posts.created_at.strftime('%Y/%m/%d') %></td>
   </tr>
    <tr>
     <th>ゲーム名</th>
-    <td class="table-light"><%= @posts.game_name %></td>
+    <td class="table-light"><%= posts.game_name %></td>
   </tr>
    <tr>
     <th>コメント数</th>
-    <td> <% if @posts.favorited_by?(current_user) %>
+    <td><%= posts.comments.count %></td>
+  </tr>
+    
+     <% if posts.favorited_by?(current_player) %>
     <p>
-      <%= link_to public_post_favorites_path(@posts), method: :delete do %>
-        ♥<%= @posts.favorites.count %> いいね
+      <%= link_to public_post_favorites_path(posts), method: :delete do %>
+        ♥<%= posts.favorites.count %> いいね
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to public_post_favorites_path(@posts), method: :post do %>
-        ♡<%= @posts.favorites.count %> いいね
+      <%= link_to public_post_favorites_path(posts), method: :post do %>
+        ♡<%= posts.favorites.count %> いいね
       <% end %>
     </p>
   <% end %>
-  </td>
-  </tr>
+ 
+ 
    <tr>
-    <th>詳細へ</th>
+    <th><%= link_to "詳細へ",public_post_path(posts) %></th>
     <td></td>
   </tr>
 </table>

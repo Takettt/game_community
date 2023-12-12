@@ -3,6 +3,10 @@
 <%= form_with model: @player, url: public_player_path, method: :patch do |f| %>
 <table>
   <tr>
+    <th>プロフィール画像の変更</th>
+    <td><%= f.file_field :profile_image, accept: 'image/*' %></td>
+  </tr>
+  <tr>
     <th>ニックネーム</th>
     <td><%= f.text_field :nickname %></td>
   </tr>

@@ -7,6 +7,7 @@ class Player < ApplicationRecord
          enum play_style: { enjoy: 0, kill_move: 1, rank_priority: 2, hide: 3 }
 
          has_many :favorites, dependent: :destroy
+         has_many :posts, dependent: :destroy
          has_many :comments, dependent: :destroy
          has_many :group_players, dependent: :destroy
          has_many :group_approvals, dependent: :destroy
@@ -15,6 +16,7 @@ class Player < ApplicationRecord
          has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
          has_many :followings, through: :active_relationships, source: :followed
          has_many :followers, through: :passive_relationships, source: :follower
+         has_one_attached :profile_image, dependent: :destroy
 
          validates :last_name,presence: true
          validates :first_name,presence: true
@@ -23,17 +25,35 @@ class Player < ApplicationRecord
          validates :addicted_game,presence: true
          validates :play_style,presence: true
          validates :is_active,presence: true
-         
+
+         def self.looks(search, word)
+           if search == "perfect_match"
+             @player = Player.where("nickname LIKE? OR platform LIKE? OR addicted_game LIKE? OR play_style LIKE?","#{word}", "#{word}","#{word}%","#{word}%")
+           elsif search == "forward_match"
+             @player = Player.where("nickname LIKE? OR platform LIKE? OR addicted_game LIKE? OR play_style LIKE?","#{word}%", "#{word}","#{word}%","#{word}%")
+           elsif search == "backward_match"
+             @player = Player.where("nickname LIKE? OR platform LIKE? OR addicted_game LIKE? OR play_style LIKE?","%#{word}", "#{word}","#{word}%","#{word}%")
+           elsif search == "partial_match"
+             @player = Player.where("nickname LIKE? OR platform LIKE? OR addicted_game LIKE? OR play_style LIKE?","%#{word}%", "#{word}","#{word}%","#{word}%")
+           else
+             @player = Player.all
+           end
+         end
+
+
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
           # 指定したユーザーをフォローする
   def follow(player)
     active_relationships.create(followed_id: player.id)
   end
-  
+
   # 指定したユーザーのフォローを解除する
   def unfollow(player)
     active_relationships.find_by(followed_id: player.id).destroy
   end
-  
+
   # 指定したユーザーをフォローしているかどうかを判定
   def following?(player)
     followings.include?(player)

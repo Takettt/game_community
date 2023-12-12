@@ -28,6 +28,16 @@ class Public::SessionsController < Devise::SessionsController
    def after_sign_in_path_for(resource)
     public_top_path
    end
+   
+   def after_sign_out_path_for(resource)
+    new_player_session_path
+   end
+   
+   def guest_sign_in
+    end_player = EndPlayer.guest
+    sign_in end_player
+    redirect_to public_top_path, notice: 'ゲストユーザーとしてログインしました。'
+   end
 
    def customer_state
     player = Player.find_by(email: params[:player][:email])
