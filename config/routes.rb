@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
+  devise_scope :player do
+    post 'players/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   namespace :public do
-    post 'end_player/guest_sign_in', to: 'public/sessions#guest_sign_in'
-    root to: "public/sessions#new"
+   root to: "sessions#new"
     get "search" => "searches#search"
     get 'top' => "homes#top"
     get 'about'=>"homes#about",as: "about"

@@ -17,6 +17,11 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+   def guest_sign_in
+    player = Player.guest
+    sign_in player
+    redirect_to public_top_path, notice: 'ゲストユーザーとしてログインしました。'
+   end
 
    protected
 
@@ -33,12 +38,6 @@ class Public::SessionsController < Devise::SessionsController
     new_player_session_path
    end
    
-   def guest_sign_in
-    end_player = EndPlayer.guest
-    sign_in end_player
-    redirect_to public_top_path, notice: 'ゲストユーザーとしてログインしました。'
-   end
-
    def customer_state
     player = Player.find_by(email: params[:player][:email])
     return if player.nil?

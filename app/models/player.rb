@@ -58,4 +58,17 @@ class Player < ApplicationRecord
   def following?(player)
     followings.include?(player)
   end
+
+  def self.guest
+    find_or_create_by!(email: 'g@g') do |player|
+      player.last_name = 'ゲスト'
+      player.first_name = 'ログイン'
+      player.nickname = 'ゲスログ'
+      player.platform = 'ps4'
+      player.addicted_game = 'ゲーム'
+      player.password = 'gggggg'
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+    end
+  end
 end

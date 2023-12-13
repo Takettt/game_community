@@ -7,7 +7,7 @@
     <%= link_to new_player_session_path, class: 'nav-link font-weight-bolder' do %>
        <i class="fas fa-sign-in-alt"></i> <h1>ログイン</h1>
      <% end %>
-      <%= link_to public_end_player_guest_sign_in_path, method: :post, class: "nav-link" do %>
+      <%= link_to players_guest_sign_in_path, method: :post, class: "nav-link" do %>
        <i class="fas fa-sign-out-alt"></i> <h1>ゲストログイン</h1>
        <% end %>
      <% end %>
