@@ -1,0 +1,45 @@
+<div class="container">
+  <h2 class="text-center"><%= @group.name %></h2>
+  <h4 class="text-center">承認待ち一覧</h4>
+
+  <div class="row mt-5">
+    <div class="col-11 col-md-12 mx-auto">
+    <% if @approvals.present? %>
+      <div class="table-responsive">
+        <table class="table table-hover text-nowrap bg-light">
+          <thead class="thead-dark">
+            <tr>
+              <th>ニックネーム</th>
+              <th>合言葉</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @approval.each do |approval| %>
+              <tr>
+                <td><%= link_to approval.player.name, public_player_path(approval.player.id), class: "text-dark" %></td>
+                <td>
+                    <%= approval.player.group_password %>
+                </td>
+                <td class="text-right">
+                  <%= link_to '加入許可', public_group_group_players_path(@group, approval_id: approval.id), method: :post, class: "btn btn-sm btn-success" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <P class="text-center">承認待ちユーザーはいません。</P>
+    <% end %>
+    </div>
+    <div class="mx-auto mt-5"><%= @approvals %></div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-9 mx-auto">
+    <p class="text-center"><%= link_to "戻る", public_group_path(@group), class: 'text-dark font-weight-bold' %></p>
+    </div>
+  </div>
+
+</div>

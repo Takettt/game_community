@@ -17,12 +17,9 @@
             <%= image_tag 'no_image', size: "50x50" %>
           <% end %>
         </td>
-        <td><%= link_to group.name,public_group_path(group) %></td>
+        <td><%= group.name %></td>
         <td><%= group.introduction %></td>
-        <% if group.is_owned_by?(current_player) %>
-          <td><%= link_to '編集', edit_public_group_path(group), class: "group_#{group.id} btn btn-sm btn-success" %>
-          </td>
-        <% end %>
+        <td><%= link_to 'グループ詳細', public_group_path(group), class: "group_#{group.id} btn btn-sm btn-success" %> </td>
       </tr>
     <% end %>
   </tbody>

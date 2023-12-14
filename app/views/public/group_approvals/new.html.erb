@@ -1,2 +1,8 @@
-<h1>Public::GroupApprovals#new</h1>
-<p>Find me in app/views/public/group_approvals/new.html.erb</p>
+<div class="container">
+<h1><strong><%= @group.name %></strong> 加入試験</h1>
+ <%= form_with model: @group_approval, url: public_group_group_approvals_path do |f| %>
+   <h2>グループの合言葉を入力してください</h2>
+    <%= f.text_field :group_password, class: 'form-control'%>
+    <%= f.submit "申請"%>
+ <% end %>
+</div>

@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
 
   before_action :authenticate_player!
-  before_action :ensure_correct_player, only: [:edit, :update]
+  before_action :ensure_correct_player, only: [:edit, :update, :approval]
 
   def new
     @group = Group.new
@@ -17,6 +17,11 @@ class Public::GroupsController < ApplicationController
     end
   end
 
+  def approvals
+    @group = Group.find(params[:id])
+    @approval = @group.group_approvals
+  end
+
   def index
     @groups = Group.all
     @player = Player.find(current_player.id)
@@ -30,6 +35,7 @@ class Public::GroupsController < ApplicationController
   end
 
   def update
+    
     if @group.update(group_params)
       redirect_to public_groups_path
     else
@@ -38,6 +44,9 @@ class Public::GroupsController < ApplicationController
   end
 
   def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to public_groups_path
   end
 
   private

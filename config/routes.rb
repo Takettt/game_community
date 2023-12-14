@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
    devise_for :players,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
     get 'calendars/completion' , to:'calendars#completion'
     resources :calendars, only:[:new, :create, :edit, :update, :destroy]
 
-    resources :group_approvals, only:[:new, :create]
+    
 
     get 'players/confirm' , to:'players#confirm'
     patch 'players/leave' , to:'players#leave'
@@ -45,8 +44,11 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create, :destroy]
    end
 
-   resources :groups, only:[:new, :create, :edit, :update, :show, :index, :destroy]
-
+   resources :groups, only:[:new, :create, :edit, :update, :show, :index, :destroy] do
+   resource :group_approvals, only:[:new, :create, :destroy]
+   resource :group_players, only: [:create, :destroy]
+   end
+   get "groups/:id/approvals" => "groups#approvals", as: :approvals
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
