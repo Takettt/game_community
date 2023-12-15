@@ -7,6 +7,11 @@
       <th>ゲーム名</th>
       <td><%= f.text_field :game_name, autofocus:true %></td>
     </tr>
+    
+    <tr>
+      <th>ゲームのジャンル</th>
+      <td><%= f.select :game_genre, options_for_select([["FPS","fps" ], ["RPG","rpg" ],  ["ホラーゲーム","horror_game" ], ["アクションゲーム","action_game" ]]) %></td>
+    </tr>
 
     <tr>
       <th>募集人数</th>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-   devise_for :players,skip: [:passwords], controllers: {
+
+  devise_for :players,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
@@ -12,8 +13,17 @@ Rails.application.routes.draw do
     post 'players/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+   namespace :admin do
+     resources :posts 
+      resources :comments, only:[:index, :destroy]
+      get 'homes/top'
+  end
+
+   namespace :public do
+     get 'tag_search/tag_search'
+  end
   namespace :public do
-   root to: "sessions#new"
+   root to: "public/sessions#new"
     get "search" => "searches#search"
     get 'top' => "homes#top"
     get 'about'=>"homes#about",as: "about"
@@ -22,7 +32,7 @@ Rails.application.routes.draw do
     get 'calendars/completion' , to:'calendars#completion'
     resources :calendars, only:[:new, :create, :edit, :update, :destroy]
 
-    
+
 
     get 'players/confirm' , to:'players#confirm'
     patch 'players/leave' , to:'players#leave'

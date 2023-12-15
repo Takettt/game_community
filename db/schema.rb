@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 2023_12_13_092131) do
     t.datetime "start_time", null: false
     t.datetime "ending_time", null: false
     t.integer "today_tension", default: 0, null: false
+    t.integer "game_genre", default: 0, null: false
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

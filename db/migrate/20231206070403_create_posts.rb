@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.datetime :start_time, null: false
       t.datetime :ending_time, null: false
       t.integer :today_tension, null: false, default: 0
+      t.integer :game_genre, null: false, default: 0
       t.text :content, null: false
       t.timestamps
     end

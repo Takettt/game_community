@@ -10,7 +10,7 @@
         </tr>
         <tr>
           <th>プラットフォーム</th>
-          <td><%= player.platform%></td>
+          <td><%= player.platform %></td>
         </tr>
          <tr>
           <th>はまっているゲーム</th>
@@ -20,16 +20,30 @@
           <th>ゲームの楽しみ方</th>
           <td><%= player.play_style %></td>
         </tr>
-       
+
       <% end %>
     </tbody>
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
     <tbody>
+      <tr>
+         <th>ゲーム名</th>
+         <th>ゲームのジャンル</th>
+         <th>募集人数</th>
+         <th>始める時間</th>
+         <th>終わる時間</th>
+         <th>今日のテンション</th>
+         <th>ひとこと</th>
+      </tr>
       <% @posts.each do |post| %>
         <tr>
           <td><%= post.game_name %></td>
+          <td><%= post.game_genre %></td>
+          <td><%= post.participate_number %>人</td>
+          <td><%= post.start_time %></td>
+          <td><%= post.ending_time %></td>
           <td><%= post.today_tension %></td>
+          <td><%= post.content %></td>
         </tr>
       <% end %>
     </tbody>
