@@ -24,7 +24,7 @@ class Player < ApplicationRecord
          validates :platform,presence: true
          validates :addicted_game,presence: true
          validates :play_style,presence: true
-         validates :is_active,presence: true
+         validates :is_active, inclusion: {in: [true, false]}
 
          def self.looks(search, word)
            if search == "perfect_match"

@@ -1,0 +1,47 @@
+ <h1>プレイヤー編集</h1>
+        <%= form_with model: @player, url: admin_player_path(@player), method: :patch do |f| %>
+    <table class="table-mt3">
+     <tr>
+       <th>プレイヤーネーム</th>
+       <td><% if @player.profile_image.attached? %>
+            <%= image_tag @player.profile_image,size:"50x50" %>
+           <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+           <% end %>
+           <%= @player.last_name + @player.first_name %>
+       </td>
+     </tr>
+     
+     <tr>
+       <th>ニックネーム</th>
+       <td><%= @player.nickname %></td>
+     </tr>
+       
+     <tr>
+       <th>プラットフォーム</th>
+       <td><%= @player.platform %></td>
+     </tr>
+       
+      <tr>
+       <th>はまっているゲーム</th>
+       <td><%= @player.addicted_game %></td>
+     </tr>
+       <th>プレイスタイル</th>
+       <td><%= @player.play_style %></td>
+     <tr>
+     <tr>
+       <th>販売ステータス</th>
+       <td>
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, "利用中", value: true %>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, "退会済み", value: false %>
+       </td>
+      </tr>
+    </table>
+    <div class="row d-flex justify-content-center">
+      <%= f.submit '変更を保存', class: "btn btn-success" %>
+    </div>
+     <% end %>
+     
+     

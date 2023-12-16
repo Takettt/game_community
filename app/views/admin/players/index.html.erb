@@ -1,0 +1,31 @@
+<div class="container-mt5">
+  
+    <h1>プレイヤー一覧</h1>
+    <table class="table-mt3">
+     <tr>
+       <th>プレイヤーネーム</th>
+       <th>ニックネーム</th>
+       <th>会員ステータス</th>
+       <th></th>
+     </tr>
+     <% @players.each do |players| %>
+     <tr>
+       <td><% if players.profile_image.attached? %>
+            <%= image_tag players.profile_image,size:"50x50" %>
+           <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+           <% end %>
+           <%= players.last_name + players.first_name %>
+       </td>
+       <td><%= players.nickname %></td>
+       <td><% if players.is_active %>
+       <div style="color: red;">利用中</div>
+        <% else %>
+       <div style="color: blue;">退会済み</div>
+       <% end %>
+       </td>
+       <td><%= link_to "詳細へ", admin_player_path(players) %></td>
+     </tr>
+  <% end %>
+</table>
+</div>

@@ -1,0 +1,41 @@
+ <h1>プレイヤー詳細</h1>
+    <table class="table-mt3">
+     <tr>
+       <th>プレイヤーネーム</th>
+       <td><% if @player.profile_image.attached? %>
+            <%= image_tag @player.profile_image,size:"50x50" %>
+           <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+           <% end %>
+           <%= @player.last_name + @player.first_name %>
+       </td>
+     </tr>
+     
+     <tr>
+       <th>ニックネーム</th>
+       <td><%= @player.nickname %></td>
+     </tr>
+       
+     <tr>
+       <th>プラットフォーム</th>
+       <td><%= @player.platform %></td>
+     </tr>
+       
+      <tr>
+       <th>はまっているゲーム</th>
+       <td><%= @player.addicted_game %></td>
+     </tr>
+       
+       <th>プレイスタイル</th>
+       <td><%= @player.play_style %></td>
+       
+     <tr>
+       <th>会員ステータス</th>
+       <td><% if @player.is_active %>
+       <div style="color: red;">利用中</div>
+        <% else %>
+       <div style="color: blue;">退会済み</div>
+       <% end %>
+       </td>
+       <td><%= link_to "プロフィールを編集する", edit_admin_player_path(@player) %></td>
+     </tr>

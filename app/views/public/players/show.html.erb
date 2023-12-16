@@ -1,6 +1,10 @@
 <h1><%= @player.nickname %>さんのページ</h1>
 
-<%= image_tag post_comment.player.get_profile_image(100,100) %>
+<% if @player.profile_image.attached? %>
+  <%= image_tag @player.profile_image,size:"50x50" %>
+<% else %>
+   <%= image_tag 'no_image', size: "50x50" %>
+<% end %>
 <%= @player.platform %>
 <%= @player.addicted_game %>
 <%= @player.play_style %>

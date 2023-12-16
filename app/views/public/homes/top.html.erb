@@ -18,3 +18,12 @@
   <%=link_to "グループを作成する",new_public_group_path %> |
   <%=link_to "グループ一覧",public_groups_path %>
 <% end %>
+
+<h2>募集</h2>
+
+
+<% @posts.each do |posts| %>
+<ul class="slider">
+  <%= posts.player.profile_image %>
+</ul>
+<% end %>

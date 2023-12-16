@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+ before_action :player_state, only: [:create]
    # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -38,12 +39,12 @@ class Public::SessionsController < Devise::SessionsController
     new_player_session_path
    end
    
-   def customer_state
+   def player_state
     player = Player.find_by(email: params[:player][:email])
     return if player.nil?
     return unless player.valid_password?(params[:player][:password])
     return if player.is_active
     flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-    redirect_to new_player_session_path
+    redirect_to new_player_registration_path
    end
 end
