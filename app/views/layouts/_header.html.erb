@@ -1,14 +1,48 @@
 <header>
-   <% if player_signed_in? %>
-    <%= link_to destroy_player_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
-      <i class="fas fa-sign-out-alt"></i> <h1>ログアウト</h1>
-    <% end %>
-    <% else %>
-    <%= link_to new_player_session_path, class: 'nav-link font-weight-bolder' do %>
-       <i class="fas fa-sign-in-alt"></i> <h1>ログイン</h1>
-     <% end %>
-      <%= link_to players_guest_sign_in_path, method: :post, class: "nav-link" do %>
-       <i class="fas fa-sign-out-alt"></i> <h1>ゲストログイン</h1>
-       <% end %>
-     <% end %>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+  <!--playerログイン時-->
+          <% if player_signed_in? %>
+            <li>
+              <%= link_to public_top_path, class: 'nav-link font-weight-bolder' do %>
+                <i class="fa-solid fa-user"></i> ホーム
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to public_posts_path, class: 'nav-link font-weight-bolder' do %>
+                <i class="fa-solid fa-cubes-stacked"></i> マッチ履歴
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to destroy_player_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
+                <i class="fa-solid fa-cart-shopping"></i> ログアウト
+              <% end %>
+            </li>
+  <!--adminログイン時-->
+          <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+  <!--ログアウト時-->
+          <% else %>
+            <li>
+              <%= link_to new_player_registration_path, class: 'nav-link font-weight-bolder' do %>
+                <i class="fa-solid fa-pen"></i> 新規登録
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_player_session_path, class: 'nav-link font-weight-bolder' do %>
+                <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
+            </li>
+          <% end %>
+          </ul>
+          </div>
+        </nav>
 </header>

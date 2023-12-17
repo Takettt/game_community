@@ -12,12 +12,12 @@
 スライダーのためのcss
 ===================================*/
 .slider {/*横幅94%で左右に余白を持たせて中央寄せ*/
-   width:94%;
-    margin:0 auto;
+  width:94%;
+    margin:0 50px;
 }
 
 .slider img {
-    width:100%;/*スライダー内の画像を横幅100%に*/
+    width:80%;/*スライダー内の画像を横幅100%に*/
     height:auto;
 }
 
@@ -30,7 +30,7 @@
 /*矢印の設定*/
 
 /*戻る、次へ矢印の位置*/
-.slick-prev, 
+.slick-prev,
 .slick-next {
     position: absolute;/*絶対配置にする*/
     top: 42%;

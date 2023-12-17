@@ -1,5 +1,3 @@
-<h1>Public::Homes#top</h1>
-<% if player_signed_in? %>
   <div class="search_form">
     <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
       <%= f.text_field :word %>
@@ -17,13 +15,48 @@
    </div>
   <%=link_to "グループを作成する",new_public_group_path %> |
   <%=link_to "グループ一覧",public_groups_path %>
-<% end %>
+
 
 <h2>募集</h2>
 
+<div class="slider">
+  <% @posts.each do |post| %>
+    <div>
+      <%= link_to public_post_path(post) do %>
+        <% if post.player.profile_image.attached? %>
+          <%= image_tag  post.player.profile_image,size:"50x50" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "50x50" %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
-<% @posts.each do |posts| %>
-<ul class="slider">
-  <%= posts.player.profile_image %>
-</ul>
-<% end %>
+<script>
+  $('.slider').slick({
+    autoplay: false,//自動的に動き出すか。初期値はfalse。
+    infinite: true,//スライドをループさせるかどうか。初期値はtrue。
+    slidesToShow: 4,//スライドを画面に3枚見せる
+    slidesToScroll: 4,//1回のスクロールで3枚の写真を移動して見せる
+    prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
+    nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
+    dots: true,//下部ドットナビゲーションの表示
+    responsive: [
+      {
+      breakpoint: 769,//モニターの横幅が769px以下の見せ方
+      settings: {
+        slidesToShow: 2,//スライドを画面に2枚見せる
+        slidesToScroll: 2,//1回のスクロールで2枚の写真を移動して見せる
+      }
+    },
+    {
+      breakpoint: 426,//モニターの横幅が426px以下の見せ方
+      settings: {
+        slidesToShow: 1,//スライドを画面に1枚見せる
+        slidesToScroll: 1,//1回のスクロールで1枚の写真を移動して見せる
+      }
+    }
+  ]
+  });
+</script>
