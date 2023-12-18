@@ -9,17 +9,22 @@
           <% if player_signed_in? %>
             <li>
               <%= link_to public_top_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-user"></i> ホーム
+                <i class="fa-solid fa-house"></i> ホーム
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_public_post_path, class: 'nav-link font-weight-bolder' do %>
+                <i class="fa-solid fa-users"></i> 募集開始
               <% end %>
             </li>
             <li>
               <%=  link_to public_posts_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-cubes-stacked"></i> マッチ履歴
+                <i class="fa-solid fa-clock-rotate-left"></i> 投稿履歴
               <% end %>
             </li>
             <li>
               <%=  link_to destroy_player_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-cart-shopping"></i> ログアウト
+                <i class="fas fa-sign-out-alt"></i> ログアウト
               <% end %>
             </li>
   <!--adminログイン時-->
@@ -33,12 +38,17 @@
           <% else %>
             <li>
               <%= link_to new_player_registration_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-pen"></i> 新規登録
+                <i class="fa-solid fa-user-plus"></i> 新規登録
               <% end %>
             </li>
             <li>
               <%= link_to new_player_session_path, class: 'nav-link font-weight-bolder' do %>
                 <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
+            </li>
+            <li>
+              <%= link_to players_guest_sign_in_path, method: :post, class: 'nav-link font-weight-bolder' do %>
+                <i class="fas fa-sign-in-alt"></i> ゲストログイン
               <% end %>
             </li>
           <% end %>

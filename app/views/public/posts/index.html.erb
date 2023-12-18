@@ -1,38 +1,36 @@
-<h1>今までのマッチ一覧</h1>
+<h1>今までの投稿一覧</h1>
+<div class='col-md-8 offset-md-1'>
+  
+  <table class='table table-hover table-inverse'>
+  <tr>
+     <th>募集日</th>
+     <th>ゲーム名</th>
+     <th>コメント数</th>
+     <th>いいね</th>
+     <th></th>
+  </tr>
 
 <% @posts.each do |posts|%>
-<table>
   <tr>
-    <th>募集日</th>
     <td class="table-light"><%= posts.created_at.strftime('%Y/%m/%d') %></td>
-  </tr>
-   <tr>
-    <th>ゲーム名</th>
     <td class="table-light"><%= posts.game_name %></td>
-  </tr>
-   <tr>
-    <th>コメント数</th>
-    <td><%= posts.comments.count %></td>
-  </tr>
-    
+    <td class="table-light"><%= posts.comments.count %></td>
      <% if posts.favorited_by?(current_player) %>
-    <p>
+    <td class="table-light">
       <%= link_to public_post_favorites_path(posts), method: :delete do %>
-        ♥<%= posts.favorites.count %> いいね
+      ♥<%= posts.favorites.count %> いいね
       <% end %>
-    </p>
+    </td>
     <% else %>
-    <p>
+    <td class="table-light">
       <%= link_to public_post_favorites_path(posts), method: :post do %>
-        ♡<%= posts.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
- 
- 
-   <tr>
-    <th><%= link_to "詳細へ",public_post_path(posts) %></th>
-    <td></td>
+      ♡<%= posts.favorites.count %> いいね
+    <% end %>
+    </td>
+    <td class="table-light"><%= link_to "詳細へ",public_post_path(posts) %></td>
+   <% end %>
+   <% end %>
   </tr>
+   
 </table>
-<% end %>
+</div>

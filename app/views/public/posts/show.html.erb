@@ -1,5 +1,10 @@
+<div class='col-md-8 offset-md-1'>
+  <table class='table table-hover table-inverse'>
 <h1>募集の詳細</h1>
-<table>
+  <tr>
+    <th>募集者名</th>
+    <td><%= @post.player.nickname %></td>
+  </tr>
   <tr>
     <th>ゲーム名</th>
     <td><%= @post.game_name %></td>
@@ -22,21 +27,16 @@
   </tr>
   <tr>
     <th>その日のテンション</th>
-    <td><%= @post.today_tension %></td>
+    <td><%= @post.today_tension_i18n %></td>
   </tr>
   <tr>
     <th>ひとこと</th>
     <td><%= @post.content %></td>
   </tr>
-  <tr>
-    <th></th>
-    <td></td>
-  </tr>
-  <tr>
-    <th></th>
-    <td></td>
-  </tr>
 </table>
+</div>
+<div class='col-md-8 offset-md-1'>
+  <h1>コメント</h1>
 <div>
   <% @post.comments.each do |comment| %>
     <%= comment.player.nickname %>
@@ -49,6 +49,7 @@
 <div>
   <%= form_with model: [@post, @comment], url: public_post_comments_path(@post), method: :post do |f| %>
     <%= f.text_area :thought, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
+    <%= f.submit "送信する", class: 'btn btn-info' %>
   <% end %>
+</div>
 </div>

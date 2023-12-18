@@ -1,8 +1,7 @@
-<h1>今すぐゲーム募集をしよう！</h1>
-
-
-<%= form_with model: @post, url: public_posts_confirm_path, method: :post do |f| %>
-  <table>
+<div class='col-md-8 offset-md-1'>
+  <h1>今すぐゲーム募集をしよう</h1>
+    <%= form_with model: @post, url: public_posts_confirm_path, method: :post do |f| %>
+    <table class='table table-borderless'>
     <tr>
       <th>ゲーム名</th>
       <td><%= f.text_field :game_name, autofocus:true %></td>
@@ -51,7 +50,7 @@
       <th>ひとこと</th>
       <td><%= f.text_area :content %></td>
     </tr>
-
   </table>
-  <%= f.submit "確認画面へ" %>
+  <%= f.submit "確認画面へ", class:'btn btn-info' %>
 <% end %>
+</div>

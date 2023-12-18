@@ -1,4 +1,6 @@
 class Group < ApplicationRecord
+  enum group_approval: { applying: 0, approval: 1, rejected: 2}
+  
   has_many :group_approvals, dependent: :destroy
   has_many :group_players, dependent: :destroy
   has_many :calendars, dependent: :destroy

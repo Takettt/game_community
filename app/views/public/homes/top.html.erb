@@ -1,3 +1,4 @@
+ <div class='col-md-8 offset-md-1'>
   <div class="search_form">
     <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
       <%= f.text_field :word %>
@@ -6,18 +7,45 @@
       <%= f.submit "検索", class: "btn btn-primary" %>
     <% end %>
   </div>
-  
+
    <div class="search_form">
       <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
       <%= f.text_field :word_tag %>
       <%= f.submit "タグ検索", class: "btn btn-primary" %>
     <% end %>
    </div>
-  <%=link_to "グループを作成する",new_public_group_path %> |
-  <%=link_to "グループ一覧",public_groups_path %>
 
+  <div class="row">
+    <span class="icon_layers">
+      <h2 >自分で募集する</h2>
+      <%= link_to new_public_post_path do %>
+       <i class="fa-solid fa-users size icon_layers2"></i>
+      <% end %>
+      <%= link_to new_public_group_path do %>
+      <i class="fa-solid fa-plus size icon_layers3"></i>
+      <% end %>
+   
+      <%= link_to public_groups_path do %>
+      <i class="fa-regular fa-address-book size icon_layers4"></i>
+      <% end %>
+    </span>
+  </div>
 
-<h2>募集</h2>
+  <div class="row mt-5">
+    <h2>今日のテンションで探そう</h2>
+    <span class="icon_layers5">
+    <i class="fa-regular fa-face-smile-beam size mr-5"></i>
+    <span class="icon_layers_text2">とても元気</span>
+    <i class="fa-regular fa-face-smile-wink size ml-5 mr-5"></i>
+    <i class="fa-regular fa-face-grin-wide size ml-5 mr-5"></i>
+    <i class="fa-regular fa-face-grin-beam-sweat size ml-5"></i>
+    </span>
+  </div>
+
+<div class="text-center">
+<h2 class="fa-solid fa-gamepad">募集一覧<i class="fa-solid fa-headset"></i></h2>
+</div>
+
 
 <div class="slider">
   <% @posts.each do |post| %>
@@ -31,6 +59,7 @@
       <% end %>
     </div>
   <% end %>
+</div>
 </div>
 
 <script>

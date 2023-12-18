@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2023_12_13_092131) do
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
     t.string "introduction", null: false
+    t.integer "group_approval", default: 0, null: false
     t.integer "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

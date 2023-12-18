@@ -1,6 +1,7 @@
+<div class='col-md-8 offset-md-1'>
 <h1>確認画面</h1>
 <%= form_with model: @post, url:public_posts_path, method: :post, class: 'post_confirm' do |f| %>
-<table>
+<table class='table table-borderless'>
   <tr>
     <th>ゲーム名</th>
     <td><%= f.text_field :game_name ,value: @post.game_name, readonly: true  %></td>
@@ -32,6 +33,5 @@
   </tr>
 </table>
 
-
- <%= f.submit "確定" %>
+ <%= f.submit "確定", class: 'btn btn-info' %>
 <% end %>

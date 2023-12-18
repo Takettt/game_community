@@ -104,3 +104,51 @@ a:hover,
 a:active{
   text-decoration: none;
 }
+
+.size{
+  font-size:10em; /*1.5倍にする*/
+}
+
+.icon_layers{
+	min-width: 3em;
+    position: relative;
+    vertical-align: middle;
+	text-align: center;
+}
+
+.icon_layers2{
+  margin-left: 100px;
+}
+
+.icon_layers3{
+  margin-left: 280px;
+}
+
+.icon_layers4{
+  margin-left: 80px;
+}
+
+.icon_layers5{
+  margin: auto;
+}
+
+.icon_layers_text{
+	top: 1em;
+	min-width: 100%;
+	font-size: 2em;
+}
+
+.icon_layers_text2{
+	top: 10px;
+	min-width: 100%;
+	font-size: 2em;
+}
+
+.icon_layers_text3{
+  margin-right: 500px;
+  font-size: 3em;
+}
+
+.submit_center{
+  text-align: center;
+}
