@@ -3,56 +3,64 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-<div class="container">
-  <table class="table　borderless mt-5">
-    
-   <tr>
-     <td>名前</td>
-     <td>（姓）</td>
-     <td><%= f.text_field :last_name, autofocus: true %></td>
-     <td>（名）</td>
-     <td><%= f.text_field :first_name %></td>
-   </tr>
+  <div class="container">
+    <div class="row">
+      <div class='col-md-12 mx-auto'>
+      <table class="table table mt-5">
+        <tr>
+          <th>名前</th>
+          <td>（姓）<%= f.text_field :last_name, autofocus: true, class: "form-control" %></td>
+          <td>（名）<%= f.text_field :first_name ,class:"form-control"%></td>
+         </tr>
 
-    <tr>
-     <td>ニックネーム</td>
-     <td><%= f.text_field :nickname, autofocus: true %></td>
-    </tr>
+        <tr>
+           <th>ニックネーム</th>
+           <td><%= f.text_field :nickname, autofocus: true , class: "form-control" %></td>
+         </tr>
 
-    <tr>
-      <td>メールアドレス</td>
-      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-    </tr>
+         <tr>
+            <th>メールアドレス</th>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"  %></td>
+          </tr>
 
-    <tr>
-     <td>プラットフォーム</td>
-     <td><%= f.text_field :platform, autofocus: true %></td>
-    </tr>
+          <tr>
+            <th>プラットフォーム</th>
+            <td><%= f.text_field :platform, autofocus: true, class: "form-control"  %></td>
+          </tr>
 
-    <tr>
-     <td>はまっているゲーム</td>
-     <td><%= f.text_field :addicted_game, autofocus: true %></td>
-    </tr>
+          <tr>
+            <th>はまっているゲーム</th>
+            <td><%= f.text_field :addicted_game, autofocus: true , class: "form-control" %></td>
+          </tr>
 
-    <tr>
-     <td>ゲーム楽しみ方</td>
-     <td><%= f.select :play_style, options_for_select([["エンジョイ","enjoy" ], ["キルムーブ","kill_move" ],  ["順位優先","rank_priority" ], ["ハイド","hide" ]]) %></td>
-    </tr>
+          <tr>
+            <th>ゲーム楽しみ方</th>
+            <td><%= f.select :play_style, options_for_select([["エンジョイ","enjoy" ], ["キルムーブ","kill_move" ],  ["順位優先","rank_priority" ], ["ハイド","hide" ]]) %></td>
+          </tr>
 
-    <tr>
-      <td>パスワード（6文字以上）</td>
-      <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-    </tr>
+          <tr>
+            <th>パスワード（6文字以上）</th>
+            <td><%= f.password_field :password, autocomplete: "new-password", class: "form-control" %></td>
+          </tr>
 
-    <tr>
-      <td>パスワード（確認用）</td>
-      <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-   </tr>
-  </table>
+          <tr>
+            <th>パスワード（確認用）</th>
+            <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"  %></td>
+         </tr>
+       </table>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+       <div class="form-group text-center">
+          <div class="actions">
+          <%= f.submit "新規登録", :class => "btn btn-primary" %>
+
+        <div class="form-group text-center">
+          <div class="actions">
+            <h4 class="mb-5 mt-5">会員登録がお済な方は</h4>
+            <h5><%= render "public/shared/links" %></h5>
+          </div>
+        </div>
+    </div>
+ </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+

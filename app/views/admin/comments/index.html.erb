@@ -7,13 +7,13 @@
     <th class="col-1"></th>
     <th class="col-1"></th>
   </tr>
-<% @comments.each do |comment| %>
+<% @comment.each do |comment| %>
   <tr>
-    <td class="col-2"><%= @players.find(comment.player_id).last_name + @players.find(comment.player_id).first_name %></td>
+    <td class="col-2"><%= @player.find(comment.player_id).last_name + @player.find(comment.player_id).first_name %></td>
     <td class="col-8"><%= comment.thought %></td>
     <td class="col-1"><%= comment.created_at.strftime('%Y/%m/%d') %></td>
     <td class="col-1">
-    <%= link_to '削除', admin_comment_path(comment), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
+    <%= link_to '削除', admin_post_comment_path(@post ,comment), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-sm btn-danger" %>
     </td>
   </tr>
 <% end %>

@@ -1,9 +1,11 @@
-<h1>本当に退会しますか？</h1>
-  <p>
+<h1 class="text-center">本当に退会しますか？</h1>
+  <p class="size1">
     退会すると、会員登録情報や<br>
     これまでのマッチ履歴などが閲覧できなくなります。<br>
     退会する場合は、「退会する」をクリックしてください。
   </p>
 
-  <%= link_to "退会しない", public_root_path, :class => "btn btn-primary ms-3" %>
-  <%= link_to "退会する", public_players_leave_path(@player.id), method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
+  <div class="text-center">
+    <%= link_to "退会しない", public_top_path, :class => "btn btn-primary ms-3" %>
+    <%= link_to "退会する", public_players_leave_path(@player.id), method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
+  </div>

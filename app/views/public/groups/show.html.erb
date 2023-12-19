@@ -31,7 +31,8 @@
               　<%= link_to '加入申請', new_public_group_group_approvals_path(@group), class: "btn btn-sm btn-success" %>
               <% end %>
             </td>
-            <td><%= @group.group_approval %></td>
+            <%# byebug %>
+            <td><%= @group.group_approval(approval_id, status) %></td>
           </tr>
         </tbody>
       </table>

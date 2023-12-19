@@ -1,10 +1,13 @@
 class Admin::CommentsController < ApplicationController
   def index
-    @comments = Comment.all
-    @players = Player.all
+    @post = Post.find(params[:id])
+    @comment = Comment.find(parms[:id])
+    @player = Player.find(params[:id])
+    @comment_post = post.comment
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to request.referer

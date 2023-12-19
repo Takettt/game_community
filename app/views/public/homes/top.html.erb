@@ -1,5 +1,7 @@
- <div class='col-md-8 offset-md-1'>
-  <div class="search_form">
+ <div class="container">
+ <div class="row">
+ <div class='col-md-12 mx-auto'>
+  <div class="search_form d-flex justify-content-center">
     <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
       <%= f.text_field :word %>
       <%= f.select :range, options_for_select([['player'], ['Post']]) %>
@@ -8,43 +10,56 @@
     <% end %>
   </div>
 
-   <div class="search_form">
+   <div class="search_form d-flex justify-content-center">
       <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
       <%= f.text_field :word_tag %>
       <%= f.submit "タグ検索", class: "btn btn-primary" %>
     <% end %>
    </div>
+    <div class="mt-5">
+      <span class="text-left my_post">自分で募集する</span>
+      <span class="text-center my_post2">グループ新規作成</span>
+      <span class="text-right my_post3">グループ一覧</span>
+    </div>
 
-  <div class="row">
-    <span class="icon_layers">
-      <h2 >自分で募集する</h2>
-      <%= link_to new_public_post_path do %>
-       <i class="fa-solid fa-users size icon_layers2"></i>
-      <% end %>
-      <%= link_to new_public_group_path do %>
-      <i class="fa-solid fa-plus size icon_layers3"></i>
-      <% end %>
-   
-      <%= link_to public_groups_path do %>
-      <i class="fa-regular fa-address-book size icon_layers4"></i>
-      <% end %>
-    </span>
-  </div>
+      <div class="icon_layers">
+        <%= link_to  new_public_post_path do %>
+          <i class="fa-solid fa-users size icon_layers2"></i>
+        <% end %>
+        <%= link_to new_public_group_path do %>
+          <i class="fa-solid fa-plus size icon_layers3"></i>
+        <% end %>
+        <%= link_to public_groups_path do %>
+          <i class="fa-regular fa-address-book size icon_layers4"></i>
+        <% end %>
+      </div>
 
-  <div class="row mt-5">
-    <h2>今日のテンションで探そう</h2>
-    <span class="icon_layers5">
-    <i class="fa-regular fa-face-smile-beam size mr-5"></i>
-    <span class="icon_layers_text2">とても元気</span>
-    <i class="fa-regular fa-face-smile-wink size ml-5 mr-5"></i>
-    <i class="fa-regular fa-face-grin-wide size ml-5 mr-5"></i>
-    <i class="fa-regular fa-face-grin-beam-sweat size ml-5"></i>
-    </span>
-  </div>
+    <h2 class="mt-5">今日のテンションで探そう</h2>
+    <div class="d-flex justify-content-center-between tension">
+      <%= link_to (public_posts_posting_path(option: :posting_option, value: 0))do %>
+        <i class="fa-regular fa-face-smile-beam size mr-5"></i>
+      <% end %>
+      <%= link_to (public_posts_posting_path(option: :posting_option, value: 1)) do %>
+        <i class="fa-regular fa-face-smile-wink size ml-5 mr-5"></i>
+      <% end %>
+      <%= link_to (public_posts_posting_path(option: :posting_option, value: 2)) do %>
+        <i class="fa-regular fa-face-grin-wide size ml-5 mr-5"></i>
+      <% end %>
+      <%= link_to (public_posts_posting_path(option: :posting_option, value: 3)) do %>
+        <i class="fa-regular fa-face-grin-beam-sweat size ml-5"></i>
+      <% end %>
+    </div>
 
-<div class="text-center">
-<h2 class="fa-solid fa-gamepad">募集一覧<i class="fa-solid fa-headset"></i></h2>
-</div>
+    <div class="d-flex justify-content-between tension">
+      <span class="icon_layers_text2">とても元気</span>
+      <span class="icon_layers_text6">元気</span>
+      <span class="icon_layers_text4">普通</span>
+      <span class="icon_layers_text5">少し疲れた</span>
+    </div>
+
+    <div class="text-center">
+      <h2 class="fa-solid fa-gamepad">募集一覧<i class="fa-solid fa-headset"></i></h2>
+    </div>
 
 
 <div class="slider">
@@ -61,7 +76,8 @@
   <% end %>
 </div>
 </div>
-
+</div>
+</div>
 <script>
   $('.slider').slick({
     autoplay: false,//自動的に動き出すか。初期値はfalse。

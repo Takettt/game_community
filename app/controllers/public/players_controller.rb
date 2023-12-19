@@ -14,7 +14,7 @@ class Public::PlayersController < ApplicationController
   def update
     @player = Player.find(params[:id])
     if @player.update(player_params)
-      redirect_to public_top_path
+      redirect_to public_player_path(@player)
     else
       render "edit"
     end
@@ -40,6 +40,6 @@ class Public::PlayersController < ApplicationController
 
   private
    def player_params
-     params.require(:player).permit(:last_name, :first_name, :nickname, :email, :platform, :addicted_game, :play_style)
+     params.require(:player).permit(:last_name, :first_name, :nickname, :email, :platform, :addicted_game, :play_style, :profile_image)
    end
 end

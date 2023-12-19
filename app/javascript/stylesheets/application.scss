@@ -109,6 +109,10 @@ a:active{
   font-size:10em; /*1.5倍にする*/
 }
 
+.size1{
+  font-size:3em;
+}
+
 .icon_layers{
 	min-width: 3em;
     position: relative;
@@ -117,15 +121,17 @@ a:active{
 }
 
 .icon_layers2{
-  margin-left: 100px;
+  margin-right: 70px;
 }
 
 .icon_layers3{
-  margin-left: 280px;
+  margin-left: 200px;
+  margin-right: 50px;
 }
 
 .icon_layers4{
   margin-left: 80px;
+  margin-right: 50;
 }
 
 .icon_layers5{
@@ -139,8 +145,19 @@ a:active{
 }
 
 .icon_layers_text2{
-	top: 10px;
-	min-width: 100%;
+	font-size: 2em;
+}
+
+.icon_layers_text6{
+	font-size: 2em;
+	
+}
+
+.icon_layers_text4{
+	font-size: 2em;
+}
+
+.icon_layers_text5{
 	font-size: 2em;
 }
 
@@ -151,4 +168,24 @@ a:active{
 
 .submit_center{
   text-align: center;
+}
+
+.my_post{
+  margin-left: 200px;
+  font-size: 2em;
+}
+
+.my_post2{
+  margin-left: 210px;
+  font-size: 2em;
+}
+
+.my_post3{
+  margin-left: 50px;
+  font-size: 2em;
+}
+
+.tension{
+  justify-content: space-between; /* 要素間のスペースを均等に分配 */
+  margin: 0 150px; /* 任意のマージンを指定 */ 
 }

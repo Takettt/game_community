@@ -6,7 +6,6 @@
     <div class="col-11 col-md-12 mx-auto">
     <% if @approval.present? %>
       <div class="table-responsive">
-         <%= form_with model:@approval, url: public_group_path(@group) do |f| %>
         <table class="table table-hover text-nowrap bg-light">
           <thead class="thead-dark">
             <tr>
@@ -24,16 +23,11 @@
                     <%= approval.group_password %>
                 </td>
                 <td class="text-right">
-                  <%= link_to '加入許可', public_group_group_players_path(@group, approval_id: approval.id), method: :post, class: "btn btn-sm btn-success" %>
+                  <%= link_to '承認中', public_group_group_approvals_path(@group, approval_id: approval.id,status:"applying"), method: :patch, class: "btn btn-sm btn-success" %>
+                  <%= link_to '承認', public_group_group_approvals_path(@group, approval_id: approval.id,status:"approval"), method: :patch, class: "btn btn-sm btn-success" %>
+                  <%= link_to '却下', public_group_group_approvals_path(@group, approval_id: approval.id,status:"rejected"), method: :patch, class: "btn btn-sm btn-success" %>
                 </td>
-              
-              
-                
-                 <td><%= f.select :group_approval, options_for_select([["申請中","applying"], ["承認","approval"],  ["却下","rejected"]]) %>
-
             <% end %>
-            <% end %>
-              
               </tr>
           </tbody>
         </table>

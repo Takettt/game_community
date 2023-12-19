@@ -10,6 +10,14 @@ class Public::GroupApprovalsController < ApplicationController
     approval.save!
     redirect_to public_group_path(@group), notice: "グループへ参加申請をしました"
   end
+  def update
+    # byebug
+    @group = Group.find(params[:group_id])
+    approval = GroupApproval.find(params[:approval_id])
+    approval.update(status:params[:status])
+    redirect_to public_group_path(@group), notice: ""
+  end
+
 
   def destroy
     approval = current_player.group_approvals.find_by(group_id: params[:group_id])

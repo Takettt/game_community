@@ -1,4 +1,6 @@
 class GroupApproval < ApplicationRecord
+  enum status: { applying: 0, approval: 1, rejected: 2}
+  
   belongs_to :player
   belongs_to :group
   

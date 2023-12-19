@@ -11,10 +11,16 @@ ja:
         very_well: "とても元気"
         fine: "元気"
         usually: "普通"
-        tired: "疲れた"
+        tired: "少し疲れた"
 
     group_approval:
       status:
         applying: "申請中"
         approval: "承認"
-        reject: "却下"
+        rejected: "却下"
+
+    group:
+      status:
+        applying: "申請中"
+        approval: "承認"
+        rejected: "却下"

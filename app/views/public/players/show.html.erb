@@ -1,20 +1,47 @@
-<h1><%= @player.nickname %>さんのページ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h1><%= @player.nickname %>さんのページ</h1>
 
-<% if @player.profile_image.attached? %>
-  <%= image_tag @player.profile_image,size:"50x50" %>
-<% else %>
-   <%= image_tag 'no_image', size: "50x50" %>
-<% end %>
-<%= @player.platform %>
-<%= @player.addicted_game %>
-<%= @player.play_style %>
-<%= link_to "プロフィールを編集する", public_player_path(@player.id) %>
-
- <td><%= link_to public_player_followings_path(@player) do %>
- フォロー数<%= @player.followings.count %>人
- <% end %>
- </td>
- <td><%= link_to public_player_followers_path(@player) do %>
- フォロワー数<%= @player.followers.count %>人
- <% end %>
- </td>
+      <table class='table table-hover table-inverse'>
+        <tr>
+          <th><% if @player.profile_image.attached? %>
+                <%= image_tag @player.profile_image,size:"50x50" %>
+              <% else %>
+               <%= image_tag 'no_image', size: "50x50" %>
+              <% end %>
+          </th>
+          <td><%= @player.last_name + @player.first_name %></td>
+        </tr>
+        <tr>
+          <th>プラットフォーム</th>
+          <td><%= @player.platform %></td>
+        </tr>
+        <tr>
+           <th>はまっているゲーム</th>
+           <td><%= @player.addicted_game %></td>
+        </tr>
+        <tr>
+          <th>プレイスタイル</th>
+          <td><%= @player.play_style %></td>
+        </tr>
+        <tr>
+          <th>フォロー数</th>
+          <td><%= link_to public_player_followings_path(@player) do %>
+              <%= @player.followings.count %>人
+             <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>フォロワー数</th>
+           <td><%= link_to public_player_followers_path(@player) do %>
+               <%= @player.followers.count %>人
+            <% end %>
+           </td>
+         </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<%= link_to "プロフィールを編集する", edit_public_player_path(@player.id) %>
+ 

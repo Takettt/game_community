@@ -1,0 +1,21 @@
+<h1>投稿一覧</h1>
+<div class='col-md-8 offset-md-1'>
+  
+  <table class='table table-hover table-inverse'>
+  <tr>
+     <th>ゲーム名</th>
+     <th>今日のテンション</th>
+     <th>募集人数</th>
+     <th>始める時間</th>
+     <th>終わる時間</th>
+  </tr>
+
+  <% @posts.each do |post|%>
+  <tr>
+    <td class="table-light"><%= post.game_name %></td>
+    <td class="table-light"><%= post.today_tension %></td>
+    <td class="table-light"><%= post.participate_number %>人</td>
+    <td class="table-light"><%= post.starting_time.strftime('%Y/%m/%d') %></td>
+    <td class="table-light"><%= post.ending_time.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <% end %>

@@ -1,0 +1,25 @@
+<h1  class="form-group text-center">投稿一覧</h1>
+<div class="container">
+  <div class="row">
+    <div class='col-md-12 mx-auto'>
+      <table class="table table mt-5">
+        <tr>
+          <th>募集者ニックネーム</th>
+          <th>ゲーム名</th>
+          <th>開始時間</th>
+          <th>終了時間</th>
+          <th></th>
+        </tr>
+        <% @posts.each do |post|%>
+        <tr>
+          <td><%= post.player.nickname %></td>
+          <td><%= post.game_name %></td>
+          <td><%= post.start_time.strftime('%Y/%m/%d') %></td>
+          <td><%= post.ending_time.strftime('%Y/%m/%d') %></td>
+          <td><%= link_to "コメント一覧へ",admin_post_comments_path(@posts) %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

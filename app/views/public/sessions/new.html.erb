@@ -1,20 +1,20 @@
-<div class="col-md-8 offset-md-2">
-  <div class="mx-auto" >
-    <h4 class="m-5">ログイン</h4>
-  </div>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+    <h4 class="m-5 text-center">ログイン</h4>
+
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <form class="form-horizontal" role="form">
     <div class="form-group text-center">
-      <%= f.label :メールアドレス ,class: "col-md-3 control-label" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: "col-sm-5"%>
+      <%= f.label :メールアドレス %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control"%>
     </div>
 
     <div class="form-group text-center">
-      <%= f.label :パスワード, class: "col-md-3 control-label" %><br />
-      <%= f.password_field :password, autocomplete: "current-password" ,class: "col-sm-5"%>
+      <%= f.label :パスワード %><br />
+      <%= f.password_field :password, autocomplete: "current-password" ,class:"form-control"%>
     </div>
 
     <% if devise_mapping.rememberable? %>
@@ -26,15 +26,18 @@
 
     <div class="form-group text-center">
       <div class="actions">
-        <%= f.submit "ログイン", class: "col-sm-offset-2 col-sm-2 btn btn-primary" %>
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
       </div>
     </div>
   </form>
-  
-   <div class="col-md-8 offset-md-2">
-      <div class="mx-auto" >
-        <h4 class="m-5">会員登録がお済でない方</h4>
-         <%= render "public/shared/links" %>
+
+   <div class="form-group text-center">
+    <div class="actions">
+        <h4 class="mb-5 mt-5 mr-4">会員登録がお済でない方</h4>
+         <h5><%= render "public/shared/links" %></h5>
       </div>
    </div>
  <% end %>
+ </div>
+ </div>
+ </div>

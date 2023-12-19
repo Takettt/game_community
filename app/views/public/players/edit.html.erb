@@ -1,7 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
 <h1>プレイヤー編集</h1>
 
 <%= form_with model: @player, url: public_player_path, method: :patch do |f| %>
-<table>
+<table class='table table-hover table-inverse'>
   <tr>
     <th>プロフィール画像の変更</th>
     <td><%= f.file_field :profile_image, accept: 'image/*' %></td>
@@ -27,3 +30,7 @@
 <% end %>
 
 <%= link_to "退会する", public_players_confirm_path %>
+
+</div>
+</div>
+</div>

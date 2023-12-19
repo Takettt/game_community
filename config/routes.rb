@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   end
 
    namespace :admin do
-     resources :posts 
+      resources :posts  do
       resources :comments, only:[:index, :destroy]
+      end
       resources :players, only:[:index, :show, :edit, :update]
       get 'homes/top'
   end
@@ -50,13 +51,14 @@ Rails.application.routes.draw do
 
    post 'posts/confirm' , to:'posts#confirm'
    get 'posts/completion' , to:'posts#completion'
+   post 'posts/posting' , to:'posts#posting'
    resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
     resources :comments, only:[:create, :destroy]
     resource :favorites, only:[:create, :destroy]
    end
 
    resources :groups, only:[:new, :create, :edit, :update, :show, :index, :destroy] do
-   resource :group_approvals, only:[:new, :create, :destroy]
+   resource :group_approvals, only:[:new, :create, :destroy,:update]
    resource :group_players, only: [:create, :destroy]
    end
    get "groups/:id/approvals" => "groups#approvals", as: :approvals
