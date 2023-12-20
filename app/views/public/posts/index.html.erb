@@ -1,36 +1,39 @@
-<h1>今までの投稿一覧</h1>
-<div class='col-md-8 offset-md-1'>
-  
-  <table class='table table-hover table-inverse'>
-  <tr>
-     <th>募集時間</th>
-     <th>ゲーム名</th>
-     <th>コメント数</th>
-     <th>いいね</th>
-     <th></th>
-  </tr>
+<div class="container">
+  <div class="row">
+    <div class='col-md-12 mx-auto'>
+    <h1 class="d-flex justify-content-center mt-5 mb-5">今までの投稿一覧</h1>
 
-<% @posts.each do |posts|%>
-  <tr>
-    <td class="table-light"><%= posts.created_at.strftime('%Y/%m/%d') %></td>
-    <td class="table-light"><%= posts.game_name %></td>
-    <td class="table-light"><%= posts.comments.count %></td>
-     <% if posts.favorited_by?(current_player) %>
-    <td class="table-light">
-      <%= link_to public_post_favorites_path(posts), method: :delete do %>
-      ♥<%= posts.favorites.count %> いいね
-      <% end %>
-    </td>
-    <% else %>
-    <td class="table-light">
-      <%= link_to public_post_favorites_path(posts), method: :post do %>
-      ♡<%= posts.favorites.count %> いいね
-    <% end %>
-    </td>
-    <td class="table-light"><%= link_to "詳細へ",public_post_path(posts) %></td>
-   <% end %>
-   <% end %>
-  </tr>
-   
-</table>
+    <table class='table table-hover table-inverse'>
+    <tr>
+       <th>募集時間</th>
+       <th>ゲーム名</th>
+       <th>コメント数</th>
+       <th>いいね</th>
+       <th></th>
+    </tr>
+
+    <% @posts.each do |posts|%>
+      <tr>
+        <td class="table-light"><%= posts.created_at.strftime('%Y/%m/%d') %></td>
+        <td class="table-light"><%= posts.game_name %></td>
+        <td class="table-light"><%= posts.comments.count %></td>
+         <% if posts.favorited_by?(current_player) %>
+        <td class="table-light">
+          <%= link_to public_post_favorites_path(posts), method: :delete do %>
+          ♥<%= posts.favorites.count %> いいね
+          <% end %>
+        </td>
+        <% else %>
+        <td class="table-light">
+          <%= link_to public_post_favorites_path(posts), method: :post do %>
+          ♡<%= posts.favorites.count %> いいね
+        <% end %>
+        <% end %>
+        </td>
+        <td class="table-light"><%= link_to "詳細へ",public_post_path(posts) %></td>
+       <% end %>
+      </tr>
+    </table>
+    </div>
+  </div>
 </div>

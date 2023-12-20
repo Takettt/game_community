@@ -1,2 +1,0 @@
-class EndPlayer < ApplicationRecord
-end

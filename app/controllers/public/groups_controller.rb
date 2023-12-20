@@ -29,6 +29,7 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @approval = GroupApproval.where(group_id:[@group], player_id:[current_player.id])
   end
 
   def edit

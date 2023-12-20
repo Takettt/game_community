@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
    namespace :admin do
       resources :posts  do
-      resources :comments, only:[:index, :destroy]
+      resources :comments, only:[:index, :show, :destroy]
       end
       resources :players, only:[:index, :show, :edit, :update]
       get 'homes/top'
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
    post 'posts/confirm' , to:'posts#confirm'
    get 'posts/completion' , to:'posts#completion'
-   post 'posts/posting' , to:'posts#posting'
+   get 'posts/posting' , to:'posts#posting'
    resources :posts, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
     resources :comments, only:[:create, :destroy]
     resource :favorites, only:[:create, :destroy]

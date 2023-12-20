@@ -36,16 +36,16 @@
 
     <h2 class="mt-5">今日のテンションで探そう</h2>
     <div class="d-flex justify-content-center-between tension">
-      <%= link_to (public_posts_posting_path(option: :posting_option, value: 0))do %>
+      <%= link_to (public_posts_posting_path(value: 0)) do %>
         <i class="fa-regular fa-face-smile-beam size mr-5"></i>
       <% end %>
-      <%= link_to (public_posts_posting_path(option: :posting_option, value: 1)) do %>
+      <%= link_to (public_posts_posting_path(value: 1)) do %>
         <i class="fa-regular fa-face-smile-wink size ml-5 mr-5"></i>
       <% end %>
-      <%= link_to (public_posts_posting_path(option: :posting_option, value: 2)) do %>
+      <%= link_to (public_posts_posting_path(value: 2)) do %>
         <i class="fa-regular fa-face-grin-wide size ml-5 mr-5"></i>
       <% end %>
-      <%= link_to (public_posts_posting_path(option: :posting_option, value: 3)) do %>
+      <%= link_to (public_posts_posting_path(value: 3)) do %>
         <i class="fa-regular fa-face-grin-beam-sweat size ml-5"></i>
       <% end %>
     </div>

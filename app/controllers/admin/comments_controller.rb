@@ -1,9 +1,11 @@
 class Admin::CommentsController < ApplicationController
-  def index
+  def show
     @post = Post.find(params[:id])
-    @comment = Comment.find(parms[:id])
+    @post_comment = post.comment
     @player = Player.find(params[:id])
-    @comment_post = post.comment
+  end
+  
+  def index
   end
 
   def destroy

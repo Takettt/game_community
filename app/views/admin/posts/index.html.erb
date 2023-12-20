@@ -16,7 +16,7 @@
           <td><%= post.game_name %></td>
           <td><%= post.start_time.strftime('%Y/%m/%d') %></td>
           <td><%= post.ending_time.strftime('%Y/%m/%d') %></td>
-          <td><%= link_to "コメント一覧へ",admin_post_comments_path(@posts) %></td>
+          <td><%= link_to "コメント一覧へ",admin_post_comments_path(post) %></td>
         </tr>
         <% end %>
       </table>

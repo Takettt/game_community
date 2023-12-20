@@ -1,55 +1,63 @@
-<div class='col-md-8 offset-md-1'>
-  <table class='table table-hover table-inverse'>
-<h1>募集の詳細</h1>
-  <tr>
-    <th>募集者名</th>
-    <td><%= @post.player.nickname %></td>
-  </tr>
-  <tr>
-    <th>ゲーム名</th>
-    <td><%= @post.game_name %></td>
-  </tr>
-  <tr>
-    <th>募集人数</th>
-    <td><%= @post.participate_number%>人</td>
-  </tr>
-  <tr>
-    <th>集まったユーザー</th>
-    <td></td>
-  </tr>
-  <tr>
-    <th>始まった時間</th>
-    <td><%= @post.start_time %></td>
-  </tr>
-  <tr>
-    <th>終わった時間</th>
-    <td><%= @post.ending_time %></td>
-  </tr>
-  <tr>
-    <th>その日のテンション</th>
-    <td><%= @post.today_tension_i18n %></td>
-  </tr>
-  <tr>
-    <th>ひとこと</th>
-    <td><%= @post.content %></td>
-  </tr>
-</table>
-</div>
-<div class='col-md-8 offset-md-1'>
-  <h1>コメント</h1>
-<div>
-  <% @post.comments.each do |comment| %>
-    <%= comment.player.nickname %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.thought %>
-    <% if comment.player == current_player %>
-      <%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, data: { confirm: "本当に削除しますか？"} %><br>
-    <% end %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model: [@post, @comment], url: public_post_comments_path(@post), method: :post do |f| %>
-    <%= f.text_area :thought, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する", class: 'btn btn-info' %>
-  <% end %>
-</div>
+<div class="container">
+  <div class="row">
+    <div class='col-md-12 mx-auto'>
+    <table class='table table-hover table-inverse'>
+    <h1>募集の詳細</h1>
+      <tr>
+        <th>募集者名</th>
+        <td><%= @post.player.nickname %></td>
+      </tr>
+      <tr>
+        <th>ゲーム名</th>
+        <td><%= @post.game_name %></td>
+      </tr>
+      <tr>
+        <th>募集人数</th>
+        <td><%= @post.participate_number%>人</td>
+      </tr>
+      <tr>
+        <th>集まったユーザー</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>始まった時間</th>
+        <td><%= @post.start_time.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
+        <th>終わった時間</th>
+        <td><%= @post.ending_time.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
+        <th>その日のテンション</th>
+        <td><%= @post.today_tension_i18n %></td>
+      </tr>
+      <tr>
+        <th>ひとこと</th>
+        <td><%= @post.content %></td>
+      </tr>
+    </table>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class='col-md-12 mx-auto'>
+        <h1>コメント</h1>
+        <div>
+          <% @post.comments.each do |comment| %>
+            <%= comment.player.nickname %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.thought %>
+            <% if comment.player == current_player %>
+                <%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, data: { confirm: "本当に削除しますか？"} %><br>
+            <% end %>
+            <% end %>
+        </div>
+        <div>
+          <%= form_with model: [@post, @comment], url: public_post_comments_path(@post), method: :post do |f| %>
+            <%= f.text_area :thought, class: 'form-control', rows: '5', cols: '10', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する", class:'btn btn-info form-control mt-5 mb-5 %>
+          <% end %>
+        </div>
+      </div>
+     </div>
+   </div>
+  </div>
 </div>
