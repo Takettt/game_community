@@ -3,6 +3,7 @@ class Group < ApplicationRecord
   
   has_many :group_approvals, dependent: :destroy
   has_many :group_players, dependent: :destroy
+  has_many :players, through: :group_players
   has_many :calendars, dependent: :destroy
   has_one_attached :group_image
   

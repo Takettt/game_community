@@ -10,6 +10,7 @@ class Player < ApplicationRecord
          has_many :posts, dependent: :destroy
          has_many :comments, dependent: :destroy
          has_many :group_players, dependent: :destroy
+         has_many :groups, through: :group_players
          has_many :group_approvals, dependent: :destroy
          has_many :calendars, dependent: :destroy
          has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

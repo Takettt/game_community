@@ -26,7 +26,7 @@
             <td>
               <% if @group.is_owned_by?(current_player) %>
               <% elsif @group.group_players.exists?(player_id: current_player.id) %>
-              　<%= link_to 'グループ退出', public_group_group_approvals_path(@group), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当にグループを退出しますか？" } %>
+              　<%= link_to 'グループ退出', public_group_group_players_path(@group), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当にグループを退出しますか？" } %>
               <% elsif @group.group_approvals.exists?(player_id: current_player.id) %>
                 <%= link_to '申請取消', public_group_group_approvals_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
               <% else %>
@@ -34,7 +34,6 @@
               <% end %>
             </td>
             <%# byebug %>
-
           </tr>
         </tbody>
       </table>
@@ -54,5 +53,28 @@
         </div>
       <% end %>
     </div>
+    <table class='table table-hover table-inverse'>
+
+      <tr>
+        <th>ニックネーム</th>
+
+      </tr>
+        <% @group.players.each do |player| %>
+      <tr>
+        <td><%= player.nickname %></td>
+        <% if GroupApproval.exists?(player_id: player.id, group_id: @group.id) %>
+        <% approval=player.group_approvals.find_by(group_id: @group.id) %>
+          <td><%= approval.status_i18n %></td>
+          <td class="text-right">
+            <%= link_to '申請中', public_group_group_approvals_path(@group, approval_id: approval.id,status:"applying"), method: :patch, class: "btn btn-sm btn-success" %>
+            <%= link_to '承認', public_group_group_approvals_path(@group, approval_id: approval.id,status:"approval"), method: :patch, class: "btn btn-sm btn-success" %>
+            <%= link_to '却下', public_group_group_approvals_path(@group, approval_id: approval.id,status:"rejected"), method: :delete, class: "btn btn-sm btn-success" %>
+          </td>
+        <% else %>
+          <td><%= link_to '加入申請', new_public_group_group_approvals_path(@group), class: "btn btn-sm btn-success" %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
   </div>
 </div>

@@ -18,7 +18,6 @@ class Public::GroupApprovalsController < ApplicationController
     redirect_to public_group_path(@group), notice: ""
   end
 
-
   def destroy
     approval = current_player.group_approvals.find_by(group_id: params[:group_id])
     approval.destroy

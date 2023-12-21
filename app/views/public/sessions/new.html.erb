@@ -3,10 +3,8 @@
     <div class="col-6 mx-auto">
     <h4 class="m-5 text-center">ログイン</h4>
 
+<%= form_for(resource, as: resource_name, url: player_session_path) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <form class="form-horizontal" role="form">
     <div class="form-group text-center">
       <%= f.label :メールアドレス %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control"%>
@@ -29,7 +27,6 @@
         <%= f.submit "ログイン", class: "btn btn-primary" %>
       </div>
     </div>
-  </form>
 
    <div class="form-group text-center">
     <div class="actions">

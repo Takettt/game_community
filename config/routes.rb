@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+   devise_scope :player do
+    root "public/sessions#new"
+  end
 
   devise_for :players,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -25,7 +28,6 @@ Rails.application.routes.draw do
      get 'tag_search/tag_search'
   end
   namespace :public do
-   root to: "public/sessions#new"
     get "search" => "searches#search"
     get 'top' => "homes#top"
     get 'about'=>"homes#about",as: "about"

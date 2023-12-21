@@ -9,5 +9,8 @@ class Public::GroupPlayersController < ApplicationController
   end
 
   def destroy
+    group_player = GroupPlayer.current_player.find_by( group_id: params[:group_id])
+    group_player.destroy
+    redirect_to request.referer
   end
 end

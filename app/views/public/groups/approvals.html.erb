@@ -24,8 +24,8 @@
                 </td>
                 <td class="text-right">
                   <%= link_to '承認中', public_group_group_approvals_path(@group, approval_id: approval.id,status:"applying"), method: :patch, class: "btn btn-sm btn-success" %>
-                  <%= link_to '承認', public_group_group_approvals_path(@group, approval_id: approval.id,status:"approval"), method: :patch, class: "btn btn-sm btn-success" %>
-                  <%= link_to '却下', public_group_group_approvals_path(@group, approval_id: approval.id,status:"rejected"), method: :patch, class: "btn btn-sm btn-success" %>
+                  <%= link_to '承認', public_group_group_players_path(@group, approval_id: approval.id,status:"approval"), method: :post, class: "btn btn-sm btn-success" %>
+                  <%= link_to '却下', public_group_group_approvals_path(@group, approval_id: approval.id,status:"rejected"), method: :delete, class: "btn btn-sm btn-success" %>
                 </td>
             <% end %>
               </tr>
@@ -36,7 +36,7 @@
       <P class="text-center">承認待ちユーザーはいません。</P>
     <% end %>
     </div>
-   
+
   </div>
 
   <div class="row mt-5">
