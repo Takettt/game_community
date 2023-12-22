@@ -60,10 +60,13 @@ Rails.application.routes.draw do
    end
 
    resources :groups, only:[:new, :create, :edit, :update, :show, :index, :destroy] do
-   resource :group_approvals, only:[:new, :create, :destroy,:update]
+   resources :group_approvals, only:[:new, :create, :destroy,:update] do
+    delete "reject", on: :member
+   end
    resource :group_players, only: [:create, :destroy]
    end
    get "groups/:id/approvals" => "groups#approvals", as: :approvals
+
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

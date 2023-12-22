@@ -9,8 +9,14 @@ class Public::GroupPlayersController < ApplicationController
   end
 
   def destroy
-    group_player = GroupPlayer.current_player.find_by( group_id: params[:group_id])
-    group_player.destroy
+     group_player = GroupPlayer.find_by(player_id: current_player.id, group_id: params[:group_id])
+
+    if group_player
+      group_player.destroy
+    else
+      flash[:alert] = "グループから退出しました。"
+    end
+
     redirect_to request.referer
   end
 end

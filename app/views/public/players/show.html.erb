@@ -43,5 +43,7 @@
     </div>
   </div>
 </div>
-<%= link_to "プロフィールを編集する", edit_public_player_path(@player.id) %>
+<div class="form-group text-center">
+    <div class="actions">
+      <%= link_to "プロフィールを編集する", edit_public_player_path(@player.id), class: "btn btn-primary mt-3" %>
  
