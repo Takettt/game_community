@@ -16,17 +16,17 @@
     
       <tr>
         <th>始める時間</th>
-        <td><%= f.text_field :start_time, value: @post.start_time.strftime('%Y/%m/%d'), readonly: true, class:'form-control' %></td>
+        <td><%= f.text_field :start_time, value: @post.start_time.strftime('%Y/%m/%d/%H:%M'), readonly: true, class:'form-control' %></td>
       </tr>
     
       <tr>
         <th>終わる時間</th>
-        <td><%= f.text_field :ending_time, valule: @post.ending_time.strftime('%Y/%m/%d'), readonly: true, class:'form-control' %></td>
+        <td><%= f.text_field :ending_time, value: @post.ending_time.strftime('%Y/%m/%d/%H:%M'), readonly: true, class:'form-control' %></td>
       </tr>
     
       <tr>
         <th>今日のテンション</th>
-        <td><%= f.text_field :today_tension, value: @post.today_tension, readonly: true, class:'form-control' %></td>
+        <td><%= f.text_field :today_tension, value: @post.today_tension_i18n, readonly: true, class:'form-control' %></td>
       </tr>
     
       <tr>
