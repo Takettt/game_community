@@ -1,11 +1,6 @@
 class Admin::CommentsController < ApplicationController
-  def show
-    @post = Post.find(params[:id])
-    @post_comment = post.comment
-    @player = Player.find(params[:id])
-  end
-  
   def index
+    @comments = Comment.where(post_id: params[:post_id])
   end
 
   def destroy
