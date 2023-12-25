@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
       #redirect_to public_posts_completion_path
       redirect_to public_posts_completion_path
     else
-      render new
+      render :new
     end
   end
 

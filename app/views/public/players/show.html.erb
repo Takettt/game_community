@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6 mx-auto">
-      <h1><%= @player.nickname %>さんのページ</h1>
+      <h1 class="d-flex justify-content-center mt-5 mb-5"><%= @player.nickname %>さんのページ</h1>
 
       <table class='table table-hover table-inverse'>
         <tr>
@@ -46,4 +46,6 @@
 <div class="form-group text-center">
     <div class="actions">
       <%= link_to "プロフィールを編集する", edit_public_player_path(@player.id), class: "btn btn-primary mt-3" %>
+    </div>
+</div>
  

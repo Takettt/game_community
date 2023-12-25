@@ -17,8 +17,8 @@
         <td class="table-light"><%= post.game_name %></td>
         <td class="table-light"><%= post.today_tension_i18n %></td>
         <td class="table-light"><%= post.participate_number %>人</td>
-        <td class="table-light"><%= post.start_time.strftime('%Y/%m/%d') %></td>
-        <td class="table-light"><%= post.ending_time.strftime('%Y/%m/%d') %></td>
+        <td class="table-light"><%= post.start_time.strftime('%Y/%m/%d/%H:%M') %></td>
+        <td class="table-light"><%= post.ending_time.strftime('%Y/%m/%d/%H:%M') %></td>
       </tr>
       <% end %>
     </table>
