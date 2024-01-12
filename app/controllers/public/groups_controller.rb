@@ -11,8 +11,9 @@ class Public::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner_id = current_player.id
     if @group.save
-      redirect_to public_groups_path
+      redirect_to public_groups_path, notice: "グループの作成に成功しました。"
     else
+      flash.now[:alert] = "グループの作成に失敗しました。"
       render 'new'
     end
   end
@@ -37,8 +38,9 @@ class Public::GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to public_groups_path
+      redirect_to public_groups_path, notice: "グループの編集に成功しました。"
     else
+      flash.now[:alert] = "グループの編集に失敗しました。"
       render "edit"
     end
   end

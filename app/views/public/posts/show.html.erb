@@ -62,6 +62,11 @@
             <%= f.submit "送信する", class:'btn btn-info form-control mt-5 mb-5' %>
           <% end %>
         </div>
+        <div>
+          <% if @post.player.nickname == current_player.nickname %>
+            <%= link_to "投稿を削除する", public_post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？"} ,class:'btn bg-danger form-control text-white' %>
+          <% end %>
+        </div>
       </div>
      </div>
    </div>

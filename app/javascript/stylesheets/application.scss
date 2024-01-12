@@ -181,11 +181,23 @@ a:active{
 }
 
 .my_post3{
-  margin-left: 50px;
+  margin-left: 80px;
   font-size: 2em;
 }
 
 .tension{
   justify-content: space-between; /* 要素間のスペースを均等に分配 */
   margin: 0 150px; /* 任意のマージンを指定 */ 
+}
+
+.notice{
+  background-color: #8EB8FF;
+  font-size: 2em;
+  text-align: center;
+}
+
+.alert2{
+  background-color: #FFABCE;
+  font-size: 2em;
+  text-align: center;
 }

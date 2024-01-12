@@ -10,6 +10,7 @@
          <th>募集人数</th>
          <th>始める時間</th>
          <th>終わる時間</th>
+         <th></th>
       </tr>
     
       <% @posts.each do |post|%>
@@ -19,6 +20,7 @@
         <td class="table-light"><%= post.participate_number %>人</td>
         <td class="table-light"><%= post.start_time.strftime('%Y/%m/%d/%H:%M') %></td>
         <td class="table-light"><%= post.ending_time.strftime('%Y/%m/%d/%H:%M') %></td>
+        <td class="table-light"><%= link_to "詳細へ",public_post_path(post) %></td>
       </tr>
       <% end %>
     </table>

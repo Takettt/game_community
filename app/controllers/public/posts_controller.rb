@@ -14,9 +14,9 @@ class Public::PostsController < ApplicationController
      @post = Post.new(post_params)
      @post.player_id = current_player.id
     if @post.save
-      #redirect_to public_posts_completion_path
       redirect_to public_posts_completion_path
     else
+      flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -26,7 +26,6 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    # @posts = Post.where(Post.player_id = current_player.post_id).all
     @posts = Post.where("player_id = ?",current_player.id)
   end
 
@@ -35,18 +34,24 @@ class Public::PostsController < ApplicationController
     @comment = Comment.new
   end
 
-
-
   def edit
     @post = Post.find(params[:id])
   end
 
   def update
     @post = Post.find(params[:id])
-    @post.update
+    if @post.update(post_params)
+      redirect_to public_post_path(@post), notice: "投稿の編集に成功しました。"
+    else
+      flash.now[:alert] = "投稿の編集に失敗しました。"
+      render :edit
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to public_top_path
   end
 
   private

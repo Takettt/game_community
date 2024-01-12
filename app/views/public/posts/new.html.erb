@@ -8,17 +8,17 @@
           <th>ゲーム名</th>
           <td><%= f.text_field :game_name, autofocus:true, class: 'form-control' %></td>
         </tr>
-        
+
         <tr>
           <th>ゲームのジャンル</th>
           <td><%= f.select :game_genre, options_for_select([["FPS","fps" ], ["RPG","rpg" ],  ["ホラーゲーム","horror_game" ], ["アクションゲーム","action_game" ]]) %></td>
         </tr>
-    
+
         <tr>
           <th>募集人数</th>
           <td><%= f.number_field :participate_number, min:1, max:10 %></td>
         </tr>
-    
+
         <tr>
           <th>始める時間</th>
           <td>
@@ -30,7 +30,7 @@
             </div>
           </td>
         </tr>
-    
+
          <tr>
           <th>終わる時間</th>
           <td>
@@ -42,12 +42,12 @@
             </div>
           </td>
         </tr>
-    
+
          <tr>
           <th>今日のテンション</th>
           <td><%= f.select :today_tension, options_for_select([["とても元気","very_well" ], ["元気","fine" ],  ["普通","usually" ], ["疲れた","tired" ]]) %></td>
         </tr>
-    
+
         <tr>
           <th>ひとこと</th>
           <td><%= f.text_area :content ,class: 'form-control'%></td>

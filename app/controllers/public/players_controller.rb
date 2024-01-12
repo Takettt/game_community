@@ -34,8 +34,7 @@ class Public::PlayersController < ApplicationController
     @player = Player.find(current_player.id)
     @player.update(is_active: false)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました。"
-    redirect_to new_player_registration_path
+    redirect_to new_player_registration_path, notice: "退会処理を実行いたしました。"
   end
 
   private
