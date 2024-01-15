@@ -27,7 +27,7 @@
 ・たくさんの時間帯ゲーム仲間が欲しいとき
 ​
 ## 設計書
-![名称未設定ファイル drawio](https://github.com/Takettt/game_community/assets/145350221/40f6598e-8f2c-4c3f-ae7c-1f86214fbf7d)
+![game_community drawio]([https://github.com/Takettt/game_community/assets/145350221/40f6598e-8f2c-4c3f-ae7c-1f86214fbf7d](https://github.com/Takettt/game_community/issues/2))
 ​
 ## 開発環境
 - OS：Linux(CentOS)
