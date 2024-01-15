@@ -23,8 +23,16 @@
               <th>ゲームの楽しみ方</th>
               <td><%= player.play_style_i18n %></td>
             </tr>
+            <% if current_player != player %>
+              <% if current_player.following?(player) %>
+                <td><%= link_to "フォロー外す",public_player_relationships_path(player.id), method: :delete, class: "btn btn-info" %></td>
+              <% else %>
+                <td><%= link_to "フォローする",public_player_relationships_path(player.id), method: :post, class: "btn btn-success" %></td>
+              <% end %>
+          <% end %>
           <% end %>
         </tbody>
+        
       <% else %>
         <!--検索対象モデルがplayerではない時(= 検索対象モデルがBookの時) -->
         <tbody>

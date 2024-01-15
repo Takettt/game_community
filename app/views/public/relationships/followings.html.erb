@@ -1,21 +1,27 @@
-<h2>フォロー一覧</h2>
-<% if @players.exists? %>
-<table>
-  <tr>
-    <th>ニックネーム</th>
-    <th>プラットフォーム</th>
-    <th>はまっているゲーム</th>
-    <th>プレイスタイル</th>
-  </tr>
-<% @players.each do |player|%>
-  <tr>
-    <td><%= player.nickname %></td>
-    <td><%= player.platform %></td>
-    <td><%= player.addicted_game %></td>
-    <td><%= player.play_style %></td>
-  </tr>
-  <% end %>
-</table>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2>フォロー一覧</h2>
+      <% if @players.exists? %>
+      <table class='table table-hover table-inverse'>
+        <tr class="table-light">
+          <th>ニックネーム</th>
+          <th>プラットフォーム</th>
+          <th>はまっているゲーム</th>
+          <th>プレイスタイル</th>
+        </tr>
+      <% @players.each do |player|%>
+        <tr class="table-light">
+          <td><%= player.nickname %></td>
+          <td><%= player.platform %></td>
+          <td><%= player.addicted_game %></td>
+          <td><%= player.play_style_i18n %></td>
+        </tr>
+        <% end %>
+      </table>
+      <% else %>
+        <p>ユーザーはいません</p>
+      <% end %>
+       </div>
+  </div>
+</div>
