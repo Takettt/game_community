@@ -4,36 +4,58 @@
     <table class='table table-hover table-inverse'>
     <h1 class="d-flex justify-content-center mt-5 mb-5">募集の詳細</h1>
       <tr>
-        <th>募集者名</th>
-        <td><%= @post.player.nickname %></td>
+        <th class="table-light">募集者名</th>
+        <td class="table-light"><%= @post.player.nickname %></td>
       </tr>
       <tr>
-        <th>ゲーム名</th>
-        <td><%= @post.game_name %></td>
+        <th class="table-light">ゲーム名</th>
+        <td class="table-light"><%= @post.game_name %></td>
       </tr>
       <tr>
-        <th>募集人数</th>
-        <td><%= @post.participate_number%>人</td>
+        <th class="table-light">募集人数</th>
+        <td class="table-light"><%= @post.participate_number%>人</td>
       </tr>
       <!--<tr>-->
       <!--  <th>集まったユーザー</th>-->
       <!--  <td></td>-->
       <!--</tr>-->
       <tr>
-        <th>始まった時間</th>
-        <td><%= @post.start_time.strftime('%Y/%m/%d') %></td>
+        <th class="table-light">始まった時間</th>
+        <td class="table-light"><%= @post.start_time.strftime('%Y/%m/%d/%H:%M') %></td>
       </tr>
       <tr>
-        <th>終わった時間</th>
-        <td><%= @post.ending_time.strftime('%Y/%m/%d') %></td>
+        <th class="table-light">終わった時間</th>
+        <td class="table-light"><%= @post.ending_time.strftime('%Y/%m/%d/%H:%M') %></td>
       </tr>
       <tr>
-        <th>その日のテンション</th>
-        <td><%= @post.today_tension_i18n %></td>
+        <th class="table-light">その日のテンション</th>
+        <td class="table-light"><%= @post.today_tension_i18n %></td>
       </tr>
       <tr>
-        <th>ひとこと</th>
-        <td><%= @post.content %></td>
+        <th class="table-light">ひとこと</th>
+        <td class="table-light"><%= @post.content %></td>
+      </tr>
+      <tr>
+        <th class="table-light">いいね</th>
+          <% unless @post.player == current_player %>
+            <% if @post.favorited_by?(current_player) %>
+              <td class="table-light">
+                <%= link_to public_post_favorites_path(@post), method: :delete do %>
+                  ♥<%= @post.favorites.count %> いいね
+                <% end %>
+              </td>
+            <% else %>
+              <td class="table-light">
+                <%= link_to public_post_favorites_path(@post), method: :post do %>
+                  ♡<%= @post.favorites.count %> いいね
+                <% end %>
+              </td>
+            <% end %>
+          <% else %>
+              <td class="table-light">
+                ♥<%= @post.favorites.count %> いいね
+              </td>
+         <% end %>
       </tr>
     </table>
     </div>

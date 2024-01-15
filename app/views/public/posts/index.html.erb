@@ -17,18 +17,7 @@
         <td class="table-light"><%= posts.created_at.strftime('%Y/%m/%d') %></td>
         <td class="table-light"><%= posts.game_name %></td>
         <td class="table-light"><%= posts.comments.count %></td>
-         <% if posts.favorited_by?(current_player) %>
-        <td class="table-light">
-          <%= link_to public_post_favorites_path(posts), method: :delete do %>
-          ♥<%= posts.favorites.count %> いいね
-          <% end %>
-        </td>
-        <% else %>
-        <td class="table-light">
-          <%= link_to public_post_favorites_path(posts), method: :post do %>
-          ♡<%= posts.favorites.count %> いいね
-        <% end %>
-        <% end %>
+        <td class="table-light"><%= posts.favorites.count %></td>
         </td>
         <td class="table-light"><%= link_to "詳細へ",public_post_path(posts) %></td>
        <% end %>
