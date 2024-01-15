@@ -1,4 +1,4 @@
-# GAME TY
+# game_community
 ## サイト概要
 ### サイトテーマ
 気の合う、ライフスタイルの合うゲーム友達がつながれるコミュニティーサイト
@@ -27,7 +27,8 @@
 ・たくさんの時間帯ゲーム仲間が欲しいとき
 ​
 ## 設計書
-![名称未設定ファイル drawio](https://github.com/Takettt/game_community/assets/145350221/40f6598e-8f2c-4c3f-ae7c-1f86214fbf7d)
+![game_community drawio](https://github.com/Takettt/game_community/assets/145350221/07764657-f429-44d2-9ec1-1e298094888e)
+
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -35,6 +36,4 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-​
-## 使用素材
-https://illustman.net/?p=7760
+
