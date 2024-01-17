@@ -85,6 +85,27 @@ body{
   background:#eee;
 }
 
+.admin-title {
+  line-height: 1.4;/*行高*/
+}
+
+.admin-title:before, .admin-title:after { 
+  position: relative;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: inline-block;
+  font-size: 1.0em;
+  color: #ff6a6a;
+}
+.admin-title:before {
+  content:"\f053";/*アイコン種類*/
+  padding-right: 0.5em
+}
+.admin-title:after {
+  content:"\f054";/*アイコン種類*/
+  padding-left: 0.5em
+}
+
 h2,p {
     text-align:center;
     padding:20px;
@@ -150,7 +171,7 @@ a:active{
 
 .icon_layers_text6{
 	font-size: 2em;
-	
+
 }
 
 .icon_layers_text4{
@@ -187,7 +208,7 @@ a:active{
 
 .tension{
   justify-content: space-between; /* 要素間のスペースを均等に分配 */
-  margin: 0 150px; /* 任意のマージンを指定 */ 
+  margin: 0 150px; /* 任意のマージンを指定 */
 }
 
 .notice{
@@ -200,4 +221,8 @@ a:active{
   background-color: #FFABCE;
   font-size: 2em;
   text-align: center;
+}
+
+.admin-text{
+  font-size: 2.5em;
 }
