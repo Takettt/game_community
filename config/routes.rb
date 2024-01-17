@@ -32,24 +32,18 @@ Rails.application.routes.draw do
     get 'top' => "homes#top"
     get 'about'=>"homes#about",as: "about"
 
-    post 'calendars/confirm' , to:'calendars#confirm'
-    get 'calendars/completion' , to:'calendars#completion'
-    resources :calendars, only:[:new, :create, :edit, :update, :destroy]
-
-
-
     get 'players/confirm' , to:'players#confirm'
     patch 'players/leave' , to:'players#leave'
     resources :players, only:[:show, :index, :edit, :update] do
 
-      member do
-       get :favorites
-      end
+    member do
+      get :favorites
+    end
 
-      resource :relationships, only: [:create, :destroy]
-      	get "followings" => "relationships#followings", as: "followings"
-  	    get "followers" => "relationships#followers", as: "followers"
-      end
+    resource :relationships, only: [:create, :destroy]
+      get "followings" => "relationships#followings", as: "followings"
+      get "followers" => "relationships#followers", as: "followers"
+    end
 
    post 'posts/confirm' , to:'posts#confirm'
    get 'posts/completion' , to:'posts#completion'
