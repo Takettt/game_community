@@ -1,68 +1,59 @@
 <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
   <!--playerログイン時-->
-          <% if player_signed_in? %>
-            <li>
-              <%= link_to public_top_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-house"></i> ホーム
-              <% end %>
-            </li>
-            <li>
-              <%= link_to public_player_path(current_player), class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-user"></i> マイページ
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_public_post_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-users"></i> 募集開始
-              <% end %>
-            </li>
-            <li>
-              <%=  link_to public_posts_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-clock-rotate-left"></i> 投稿履歴
-              <% end %>
-            </li>
-            <li>
-              <%=  link_to destroy_player_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
-                <i class="fas fa-sign-out-alt"></i> ログアウト
-              <% end %>
-            </li>
-  <!--adminログイン時-->
-          <% elsif admin_signed_in? %>
-            <li>
-              <%= link_to admin_homes_top_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-house"></i> ホーム
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
-                <i class="fas fa-sign-out-alt"></i> ログアウト
-              <% end %>
-            </li>
-  <!--ログアウト時-->
-          <% else %>
-            <li>
-              <%= link_to new_player_registration_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-user-plus"></i> 新規登録
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_player_session_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fas fa-sign-in-alt"></i> ログイン
-              <% end %>
-            </li>
-            <li>
-              <%= link_to players_guest_sign_in_path, method: :post, class: 'nav-link font-weight-bolder' do %>
-                <i class="fas fa-sign-in-alt"></i> ゲストログイン
-              <% end %>
-            </li>
-          <% end %>
-          </ul>
-          </div>
-        </nav>
+  <% if player_signed_in? %>
+    <li>
+      <%= link_to public_top_path, class: 'nav-link font-weight-bolder' do %>
+        <i class="fa-solid fa-house"></i> ホーム
+      <% end %>
+    </li>
+    <li>
+      <%= link_to public_player_path(current_player), class: 'nav-link font-weight-bolder' do %>
+        <i class="fa-solid fa-user"></i> マイページ
+      <% end %>
+    </li>
+    <li>
+      <%= link_to new_public_post_path, class: 'nav-link font-weight-bolder' do %>
+        <i class="fa-solid fa-users"></i> 募集開始
+      <% end %>
+    </li>
+    <li>
+      <%=  link_to public_posts_path, class: 'nav-link font-weight-bolder' do %>
+        <i class="fa-solid fa-clock-rotate-left"></i> 投稿履歴
+      <% end %>
+    </li>
+    <li>
+      <%=  link_to destroy_player_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
+        <i class="fas fa-sign-out-alt"></i> ログアウト
+      <% end %>
+    </li>
+    <!--adminログイン時-->
+  <% elsif admin_signed_in? %>
+    <li>
+      <%= link_to admin_homes_top_path, class: 'nav-link font-weight-bolder' do %>
+        <i class="fa-solid fa-house"></i> ホーム
+      <% end %>
+    </li>
+    <li>
+      <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
+        <i class="fas fa-sign-out-alt"></i> ログアウト
+      <% end %>
+    </li>
+    <!--ログアウト時-->
+  <% else %>
+    <li>
+      <%= link_to new_player_registration_path, class: 'nav-link font-weight-bolder' do %>
+        <i class="fa-solid fa-user-plus"></i> 新規登録
+      <% end %>
+    </li>
+    <li>
+      <%= link_to new_player_session_path, class: 'nav-link font-weight-bolder' do %>
+        <i class="fas fa-sign-in-alt"></i> ログイン
+      <% end %>
+    </li>
+    <li>
+      <%= link_to players_guest_sign_in_path, method: :post, class: 'nav-link font-weight-bolder' do %>
+        <i class="fas fa-sign-in-alt"></i> ゲストログイン
+      <% end %>
+    </li>
+  <% end %>
 </header>
