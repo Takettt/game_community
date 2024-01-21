@@ -7,6 +7,12 @@ ja:
         rank_priority: "順位優先"
         hide: "ハイド"
     post:
+      game_genre:
+        fps: "FPS"
+        rpg: "RPG"
+        horror_game: "ホラーゲーム"
+        action_game: "アクションゲーム"
+
       today_tension:
         very_well: "とても元気"
         fine: "元気"

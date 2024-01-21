@@ -10,6 +10,6 @@ environment.plugins.prepend(
         jQuery: 'jquery/src/jquery',
         jquery: 'jquery/src/jquery',
         Popper: 'popper.js/dist/popper',
-        moment: 'moment/moment'
+        //moment: 'moment/moment'
   })
 )

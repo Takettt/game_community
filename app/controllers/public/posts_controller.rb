@@ -5,6 +5,9 @@ class Public::PostsController < ApplicationController
 
   def confirm
     @post = Post.new(post_params)
+    if !@post.valid?
+      return render :new
+    end
   end
 
   def completion

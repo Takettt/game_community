@@ -1,7 +1,7 @@
 class CreatePosts < ActiveRecord::Migration[6.1]
   def change
     create_table :posts do |t|
-      t.integer :player_id, null: false
+      t.integer :player_id, null: true
       t.string :game_name, null: false
       t.integer :participate_number, null: false
       t.datetime :start_time, null: false

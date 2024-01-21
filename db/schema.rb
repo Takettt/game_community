@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2023_12_13_092131) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "player_id", null: false
+    t.integer "player_id"
     t.string "game_name", null: false
     t.integer "participate_number", null: false
     t.datetime "start_time", null: false

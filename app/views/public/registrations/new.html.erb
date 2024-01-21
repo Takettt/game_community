@@ -35,7 +35,7 @@
 
           <tr>
             <th>ゲーム楽しみ方</th>
-            <td><%= f.select :play_style, options_for_select([["エンジョイ","enjoy" ], ["キルムーブ","kill_move" ],  ["順位優先","rank_priority" ], ["ハイド","hide" ]]) %></td>
+            <td><%= f.select :play_style, options_for_select( Player.play_styles_i18n.invert, selected: params.dig( 'player', 'play_style') ), {}, { class: "form-control" } %></td>
           </tr>
 
           <tr>
