@@ -1,89 +1,109 @@
- <div class="container">
- <div class="row">
- <div class='col-md-12 mx-auto'>
-  <div class="search_form d-flex justify-content-center">
-    <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
-      <%= f.text_field :word %>
-      <%= f.select :range, options_for_select([['player'], ['Post']]) %>
-      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]) %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
-    <% end %>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-8 offset-lg-2">
+      <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
+        <div class="form-group row">
+          <div class="col-md-4 my-1">
+            <%= f.text_field :word, placeholder:"プレイヤー名やゲーム名で検索", :size=>"28", class: "form-control" %>
+          </div>
+          <div class="col-md-2 my-1">
+            <%= f.select :range, options_for_select([['player'], ['Post']]), {}, { class: "form-control" } %>
+          </div>
+          <div class="col-md-3 my-1">
+            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]), {}, { class: "form-control" } %>
+          </div>
+          <div class="col-md-3 my-1">
+            <%= f.submit "検索", class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+      <% end %>
+      <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
+        <div class="form-group row">
+          <div class="col-md-9 my-1">
+            <%= f.text_field :word_tag, placeholder: "ジャンルで検索", class: "form-control" %>
+          </div>
+          <div class="col-md-3 my-1">
+            <%= f.submit "タグ検索", class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-   <div class="search_form d-flex justify-content-center">
-      <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
-      <%= f.text_field :word_tag %>
-      <%= f.submit "タグ検索", class: "btn btn-primary" %>
-    <% end %>
-   </div>
-    <div class="mt-5">
-      <span class="text-left my_post">自分で募集する</span>
-      <span class="text-center my_post2">グループ新規作成</span>
-      <span class="text-right my_post3">グループ一覧</span>
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <p>自分で募集する</p>
+      <%= link_to  new_public_post_path, style: "display:block;" do %>
+        <i class="fa-solid fa-users size d-flex justify-content-center"></i>
+      <% end %>
     </div>
+    <div class="col-md-4">
+      <p>グループ新規作成</p>
+      <%= link_to new_public_group_path, style: "display:block;" do %>
+        <i class="fa-solid fa-plus size d-flex justify-content-center"></i>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <p>グループ一覧</p>
+      <%= link_to public_groups_path, style: "display:block;" do %>
+        <i class="fa-regular fa-address-book size d-flex justify-content-center"></i>
+      <% end %>
+    </div>
+  </div>
 
-      <div class="icon_layers">
-        <%= link_to  new_public_post_path do %>
-          <i class="fa-solid fa-users size icon_layers2"></i>
-        <% end %>
-        <%= link_to new_public_group_path do %>
-          <i class="fa-solid fa-plus size icon_layers3"></i>
-        <% end %>
-        <%= link_to public_groups_path do %>
-          <i class="fa-regular fa-address-book size icon_layers4"></i>
+  <h2 class="mt-5">今日のテンションで探そう</h2>
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <p>とても元気</p>
+      <%= link_to public_posts_posting_path(value: 0), style: "display:block;" do %>
+        <i class="fa-regular fa-face-smile-beam size d-flex justify-content-center"></i>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <p>元気</p>
+      <%= link_to public_posts_posting_path(value: 1), style: "display:block;" do %>
+        <i class="fa-regular fa-face-smile-wink size d-flex justify-content-center"></i>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <p>普通</p>
+      <%= link_to public_posts_posting_path(value: 2), style: "display:block;" do %>
+        <i class="fa-regular fa-face-grin-wide size d-flex justify-content-center"></i>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <p>少し疲れた</p>
+      <%= link_to public_posts_posting_path(value: 3), style: "display:block;" do %>
+        <i class="fa-regular fa-face-grin-beam-sweat size d-flex justify-content-center"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <h2 class="fa-solid fa-gamepad">募集一覧<i class="fa-solid fa-headset"></i></h2>
+  </div>
+
+  <div class="slider">
+    <% @posts.each do |post| %>
+      <div>
+        <%= link_to public_post_path(post) do %>
+          <% if post.player.profile_image.attached? %>
+            <%= image_tag  post.player.profile_image,size:"50x50" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+          <% end %>
         <% end %>
       </div>
-
-    <h2 class="mt-5">今日のテンションで探そう</h2>
-    <div class="d-flex justify-content-center-between tension">
-      <%= link_to (public_posts_posting_path(value: 0)) do %>
-        <i class="fa-regular fa-face-smile-beam size mr-5"></i>
-      <% end %>
-      <%= link_to (public_posts_posting_path(value: 1)) do %>
-        <i class="fa-regular fa-face-smile-wink size ml-5 mr-5"></i>
-      <% end %>
-      <%= link_to (public_posts_posting_path(value: 2)) do %>
-        <i class="fa-regular fa-face-grin-wide size ml-5 mr-5"></i>
-      <% end %>
-      <%= link_to (public_posts_posting_path(value: 3)) do %>
-        <i class="fa-regular fa-face-grin-beam-sweat size ml-5"></i>
-      <% end %>
-    </div>
-
-    <div>
-      <span class="icon_layers_text2">とても元気</span>
-      <span class="icon_layers_text6">元気</span>
-      <span class="icon_layers_text4">普通</span>
-      <span class="icon_layers_text5">少し疲れた</span>
-    </div>
-
-    <div class="text-center">
-      <h2 class="fa-solid fa-gamepad">募集一覧<i class="fa-solid fa-headset"></i></h2>
-    </div>
-
-
-<div class="slider">
-  <% @posts.each do |post| %>
-    <div>
-      <%= link_to public_post_path(post) do %>
-        <% if post.player.profile_image.attached? %>
-          <%= image_tag  post.player.profile_image,size:"50x50" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "50x50" %>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
-</div>
-</div>
-</div>
+
 <script>
   $('.slider').slick({
     autoplay: false,//自動的に動き出すか。初期値はfalse。
     infinite: true,//スライドをループさせるかどうか。初期値はtrue。
     slidesToShow: 4,//スライドを画面に3枚見せる
-    slidesToScroll: 4,//1回のスクロールで3枚の写真を移動して見せる
+    slidesToScroll: 4,//1回のスクロールで4枚の写真を移動して見せる
     prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
     nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
     dots: true,//下部ドットナビゲーションの表示
