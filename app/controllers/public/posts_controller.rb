@@ -5,6 +5,7 @@ class Public::PostsController < ApplicationController
 
   def confirm
     @post = Post.new(post_params)
+    @post.player_id = current_player.id
     if !@post.valid?
       return render :new
     end
