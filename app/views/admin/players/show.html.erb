@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+     <div class='col-md-12 mx-auto'>
+      <h1 class="form-group text-center">プレイヤー詳細</h1>
+        <table class="table table mt-5">
+          <tr class="table-light">
+            <th>プレイヤーネーム</th>
+            <td><% if @player.profile_image.attached? %>
+                  <%= image_tag @player.profile_image,size:"100x100" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "100x100" %>
+                <% end %>
+                <%= @player.last_name + @player.first_name %>
+            </td>
+          </tr>
+
+          <tr class="table-light">
+            <th>ニックネーム</th>
+            <td><%= @player.nickname %></td>
+          </tr>
+
+          <tr class="table-light">
+            <th>プラットフォーム</th>
+            <td><%= @player.platform %></td>
+          </tr>
+
+          <tr class="table-light">
+            <th>はまっているゲーム</th>
+            <td><%= @player.addicted_game %></td>
+          </tr>
+
+          <tr class="table-light">
+            <th>プレイスタイル</th>
+            <td><%= @player.play_style_i18n %></td>
+          </tr>
+
+          <tr class="table-light">
+            <th>会員ステータス</th>
+            <td><% if @player.is_active %>
+              <div style="color: red;">利用中</div>
+            <% else %>
+              <div style="color: blue;">退会済み</div>
+            <% end %>
+            </td>
+          </tr>
+       </table>
+      <div class="form-group text-center mt-5">
+        <div class="actions">
+          <%= link_to "プロフィールを編集する", edit_admin_player_path(@player),class: "form-control btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
