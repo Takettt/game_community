@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row">
       <div class='col-md-12 mx-auto'>
-      <table class="table table mt-5">
+      <table class="table table mt-2">
         <tr>
           <th>名前</th>
           <td>（姓）<%= f.text_field :last_name, autofocus: true, class: "form-control" %></td>
@@ -51,7 +51,7 @@
 
        <div class="form-group text-center">
           <div class="actions">
-          <%= f.submit "新規登録", :class => "btn btn-primary" %>
+          <%= f.submit "新規登録", class: "form-control btn btn-primary mt-5" %>
 
         <div class="form-group text-center">
           <div class="actions">

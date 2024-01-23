@@ -3,57 +3,53 @@
     <div class='col-md-12 mx-auto'>
     <table class='table table-hover table-inverse'>
     <h1 class="d-flex justify-content-center mt-5 mb-5">募集の詳細</h1>
-      <tr>
-        <th class="table-light">募集者名</th>
-        <td class="table-light"><%= @post.player.nickname %></td>
+      <tr class="table-light">
+        <th class="col-3">募集者名</th>
+        <td class="col-9"><%= @post.player.nickname %></td>
       </tr>
-      <tr>
-        <th class="table-light">ゲーム名</th>
-        <td class="table-light"><%= @post.game_name %></td>
+      <tr class="table-light">
+        <th class="col-3">ゲーム名</th>
+        <td class="col-9"><%= @post.game_name %></td>
       </tr>
-      <tr>
-        <th class="table-light">募集人数</th>
-        <td class="table-light"><%= @post.participate_number%>人</td>
+      <tr class="table-light">
+        <th class="col-3">募集人数</th>
+        <td class="col-9"><%= @post.participate_number%>人</td>
       </tr>
-      <!--<tr>-->
-      <!--  <th>集まったユーザー</th>-->
-      <!--  <td></td>-->
-      <!--</tr>-->
-      <tr>
-        <th class="table-light">始まった時間</th>
-        <td class="table-light"><%= @post.start_time.strftime('%Y/%m/%d/%H:%M') %></td>
+      <tr class="table-light">
+        <th class="col-3">始まった時間</th>
+        <td class="col-9"><%= @post.start_time.strftime('%Y/%m/%d/%H:%M') %></td>
       </tr>
-      <tr>
-        <th class="table-light">終わった時間</th>
-        <td class="table-light"><%= @post.ending_time.strftime('%Y/%m/%d/%H:%M') %></td>
+      <tr class="table-light">
+        <th class="col-3">終わった時間</th>
+        <td class="col-9"><%= @post.ending_time.strftime('%Y/%m/%d/%H:%M') %></td>
       </tr>
-      <tr>
-        <th class="table-light">その日のテンション</th>
-        <td class="table-light"><%= @post.today_tension_i18n %></td>
+      <tr class="table-light">
+        <th class="col-3">その日のテンション</th>
+        <td class="col-9"><%= @post.today_tension_i18n %></td>
       </tr>
-      <tr>
-        <th class="table-light">ひとこと</th>
-        <td class="table-light"><%= @post.content %></td>
+      <tr class="table-light">
+        <th class="col-3">ひとこと</th>
+        <td class="col-9"><%= @post.content %></td>
       </tr>
-      <tr>
-        <th class="table-light">いいね</th>
+      <tr class="table-light">
+        <th class="col-3">いいね</th>
           <% unless @post.player == current_player %>
             <% if @post.favorited_by?(current_player) %>
-              <td class="table-light">
+              <td class="col-3 table-light">
                 <%= link_to public_post_favorites_path(@post), method: :delete do %>
                   ♥<%= @post.favorites.count %> いいね
                 <% end %>
               </td>
             <% else %>
-              <td class="table-light">
+              <td class="col-3 table-light">
                 <%= link_to public_post_favorites_path(@post), method: :post do %>
                   ♡<%= @post.favorites.count %> いいね
                 <% end %>
               </td>
             <% end %>
           <% else %>
-              <td class="table-light">
-                ♥<%= @post.favorites.count %> いいね
+              <td class="col-9table-light">
+                ♥<%= @post.favorites.count %>
               </td>
          <% end %>
       </tr>
@@ -62,11 +58,11 @@
     <div class="container">
       <div class="row">
         <div class='col-md-12 mx-auto'>
-        <h1>コメント</h1>
+        <h1 class="d-flex justify-content-center mt-5 mb-5">コメント</h1>
 
         <table class='table table-hover table-inverse'>
           <% @post.comments.each do |comment| %>
-          <tr>
+          <tr class="table-light">
             <td><%= comment.player.nickname %></td>
             <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= comment.thought %></td>

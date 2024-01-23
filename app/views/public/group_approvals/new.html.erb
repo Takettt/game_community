@@ -1,10 +1,14 @@
 <div class="container">
-<h1><strong><%= @group.name %></strong> 加入試験</h1>
- <%= form_with model: @group_approval, url: public_group_group_approvals_path do |f| %>
-   <h2>グループの合言葉を入力してください</h2>
-    <%= f.text_field :group_password, class: 'form-control'%>
-    <div class="form-group text-center">
-      <div class="actions">
-        <%= f.submit "申請", class: "btn btn-primary mt-5" %>
- <% end %>
+  <div class="col-7 mx-auto">
+    <h1><strong><%= @group.name %></strong> 加入試験</h1>
+     <%= form_with model: @group_approval, url: public_group_group_approvals_path do |f| %>
+       <h2 class="mt-5 mb-5">グループの合言葉を入力してください</h2>
+        <%= f.text_field :group_password, placeholder:"こちらへ入力", class: 'form-control'%>
+        <div class="form-group text-center">
+          <div class="actions">
+            <%= f.submit "申請", class: "btn btn-primary mt-4 form-control" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
 </div>
