@@ -3,21 +3,23 @@
     <div class='col-md-12 mx-auto'>
     <h1 class="d-flex justify-content-center mt-5 mb-5">今までの投稿一覧</h1>
 
-    <table class='table table-hover table-inverse'>
-    <tr>
-       <th>募集時間</th>
-       <th>ゲーム名</th>
-       <th>コメント数</th>
-       <th>いいね</th>
-       <th></th>
-    </tr>
+    <table class='table'>
+      <thead>
+        <tr class="table-light">
+           <th>募集時間</th>
+           <th>ゲーム名</th>
+           <th>コメント数</th>
+           <th>いいね</th>
+           <th></th>
+        </tr>
+    </thead>
 
     <% @posts.each do |posts|%>
-      <tr>
-        <td class="table-light"><%= posts.created_at.strftime('%Y/%m/%d') %></td>
-        <td class="table-light"><%= posts.game_name %></td>
-        <td class="table-light"><%= posts.comments.count %></td>
-        <td class="table-light"><%= posts.favorites.count %></td>
+      <tr class="table-light">
+        <td><%= posts.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= posts.game_name %></td>
+        <td><%= posts.comments.count %></td>
+        <td><%= posts.favorites.count %></td>
         </td>
         <td class="table-light"><%= link_to "詳細へ",public_post_path(posts) %></td>
        <% end %>
