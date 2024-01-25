@@ -5,6 +5,8 @@ class Player < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          enum play_style: { enjoy: 0, kill_move: 1, rank_priority: 2, hide: 3 }
+         enum search: { player: 0, post: 1}
+         enum search_select: { perfect_match: 0, forward_match: 1, backward_match: 2, partial_match: 3}
 
          has_many :favorites, dependent: :destroy
          has_many :posts, dependent: :destroy

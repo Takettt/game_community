@@ -3,14 +3,14 @@
     <div class="col-lg-8 offset-lg-2">
       <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
         <div class="form-group row">
-          <div class="col-md-5 my-1">
-            <%= f.text_field :word, placeholder:"プレイヤー名やゲーム名で検索", :size=>"28", class: "form-control" %>
-          </div>
-          <div class="col-md-2 my-1">
-            <%= f.select :range, options_for_select([['player'], ['Post']]), {}, { class: "form-control" } %>
+          <div class="col-md-4 my-1">
+            <%= f.text_field :word, placeholder:"プレイヤー名やゲーム名", class: "form-control" %>
           </div>
           <div class="col-md-3 my-1">
-            <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"],  ["後方一致","backward_match"], ["部分一致","partial_match"]]), {}, { class: "form-control" } %>
+            <%= f.select :range, options_for_select( Player.searches_i18n.invert, selected: params.dig( 'player', 'search' ) ), {}, { class: "form-control" } %>
+          </div>
+          <div class="col-md-3 my-1">
+            <%= f.select :search, options_for_select( Player.search_selects_i18n.invert, selected: params.dig( 'player', 'search_select' ) ), {}, { class: "form-control" } %>
           </div>
           <div class="col-md-2 my-1">
             <%= f.submit "検索", class: "btn btn-primary btn-block" %>

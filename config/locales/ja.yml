@@ -6,6 +6,16 @@ ja:
         kill_move: "キルムーブ"
         rank_priority: "順位優先"
         hide: "ハイド"
+        
+      search:
+        player: "プレイヤー"
+        post: "投稿"
+        
+      search_select:
+        perfect_match: "完全一致"
+        forward_match: "前方一致"
+        backward_match: "後方一致"
+        partial_match: "部分一致"
     post:
       game_genre:
         fps: "FPS"
@@ -19,14 +29,4 @@ ja:
         usually: "普通"
         tired: "少し疲れた"
 
-    group_approval:
-      status:
-        applying: "申請中"
-        approval: "承認"
-        rejected: "却下"
-
-    group:
-      status:
-        applying: "申請中"
-        approval: "承認"
-        rejected: "却下"
+    

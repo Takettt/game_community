@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   validates :content,presence: true
   validates :game_genre,presence: true
 
-  def self.looks(search, word)
+  def self.postlooks(search, word)
     if search == "perfect_match"
       @post = Post.where("game_name LIKE? OR participate_number LIKE? OR start_time LIKE? OR ending_time LIKE?OR today_tension LIKE?","%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%")
     elsif search == "forward_match"
@@ -26,6 +26,12 @@ class Post < ApplicationRecord
     else
       @post = Post.all
     end
+  end
+
+  def self.postlooks(search, word)
+    # Player情報の取得
+    player_id = Player.where(nickname: word)[0].id
+    @posts = Post.where(player_id: player_id)
   end
 
   def self.looks_tag(search_tag, word_tag)
