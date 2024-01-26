@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
    namespace :public do
-     get 'tag_search/tag_search'
+     get 'tag_search' => 'tag_search#tag_search'
   end
   namespace :public do
     get "search" => "searches#search"

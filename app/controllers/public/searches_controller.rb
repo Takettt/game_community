@@ -3,7 +3,7 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "player"
-      @player = Player.looks(params[:search], params[:word])
+      @player = Player.playerlooks(params[:search], params[:word])
     else
       @posts = Post.postlooks(params[:search], params[:word])
     end

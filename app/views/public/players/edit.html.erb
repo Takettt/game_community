@@ -2,38 +2,38 @@
   <div class="row">
     <div class="col-6 mx-auto">
     <h1 class="d-flex justify-content-center mt-5 mb-5">プレイヤー編集</h1>
-    
+
     <%= form_with model: @player, url: public_player_path, method: :patch do |f| %>
-    <table class='table table-hover table-inverse'>
-      <tr>
-        <th>プロフィール画像の変更</th>
-        <td><%= f.file_field :profile_image, accept: 'image/*' %></td>
-      </tr>
-      <tr>
-        <th>ニックネーム</th>
-        <td><%= f.text_field :nickname %></td>
-      </tr>
-      <tr>
-        <th>プラットフォーム</th>
-        <td><%= f.text_field :platform %></td>
-      </tr>
-      <tr>
-        <th>よくやるゲーム</th>
-        <td> <%= f.text_field :addicted_game %></td>
-     </tr>
-     <tr>
-        <th>ゲームの楽しみ方</th>
-        <td><%= f.select :play_style, options_for_select([["エンジョイ","enjoy" ], ["キルムーブ","kill_move" ],  ["順位優先","rank_priority" ], ["ハイド","hide" ]]) %></td>
-      </tr>
-    </table>
-    <div class="form-group text-center">
+      <table class='table'>
+        <tr class="table-light">
+          <th>プロフィール画像の変更</th>
+          <td><%= f.file_field :profile_image, accept: 'image/*' %></td>
+        </tr>
+        <tr class="table-light">
+          <th>ニックネーム</th>
+          <td><%= f.text_field :nickname, class: "form-control" %></td>
+        </tr>
+        <tr class="table-light">
+          <th>プラットフォーム</th>
+          <td><%= f.text_field :platform, class: "form-control" %></td>
+        </tr>
+        <tr class="table-light">
+          <th>よくやるゲーム</th>
+          <td> <%= f.text_field :addicted_game, class: "form-control" %></td>
+        </tr>
+        <tr class="table-light">
+          <th>ゲームの楽しみ方</th>
+          <td><%= f.select :play_style, options_for_select( Player.play_styles_i18n.invert, selected: params.dig( 'player', 'play_style' ) ), {}, { class: "form-control" } %></td>
+        </tr>
+      </table>
+      <div class="form-group text-center">
         <div class="actions">
           <%= f.submit "確定する", class: "btn btn-primary" %>
       <% end %>
-    
-        <%= link_to "退会する", public_players_confirm_path, class: "bg-danger text-white p-2" %>
+
+        <%= link_to "退会する", public_players_confirm_path, class: "btn btn-danger btn-sm text-white p-2" %>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>

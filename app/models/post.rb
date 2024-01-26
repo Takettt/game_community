@@ -34,8 +34,8 @@ class Post < ApplicationRecord
     @posts = Post.where(player_id: player_id)
   end
 
-  def self.looks_tag(search_tag, word_tag)
-    if search == "perfect_match"
+  def self.postlooks_tag(search_tag, word_tag)
+    if search_tag == "perfect_match"
       @post = Post.where("game_genre LIKE?" ,"%#{word}%")
     else
       @post = Post.all

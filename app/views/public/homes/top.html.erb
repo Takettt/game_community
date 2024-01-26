@@ -17,7 +17,8 @@
           </div>
         </div>
       <% end %>
-      <%= form_with url: public_search_path, local: true, method: :get  do |f| %>
+      
+      <%= form_with url: public_tag_search_path, local: true, method: :get  do |f| %>
         <div class="form-group row">
           <div class="col-md-10 my-1">
             <%= f.text_field :word_tag, placeholder: "ジャンルで検索", class: "form-control" %>

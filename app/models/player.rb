@@ -29,7 +29,7 @@ class Player < ApplicationRecord
          validates :play_style,presence: true
          validates :is_active, inclusion: {in: [true, false]}
 
-         def self.looks(search, word)
+         def self.playerlooks(search, word)
            if search == "perfect_match"
              @player = Player.where("nickname LIKE? OR platform LIKE? OR addicted_game LIKE? OR play_style LIKE?","#{word}", "#{word}","#{word}%","#{word}%")
            elsif search == "forward_match"
