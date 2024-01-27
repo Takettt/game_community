@@ -77,7 +77,7 @@
         <div>
           <%= form_with model: [@post, @comment], url: public_post_comments_path(@post), method: :post do |f| %>
             <%= f.text_area :thought, class: 'form-control', rows: '5', cols: '10', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する", class:'btn btn-info form-control mt-5 mb-5' %>
+            <%= f.submit "送信する", class:'btn btn-info form-control mt-5 mb-4' %>
           <% end %>
         </div>
         <div>

@@ -26,12 +26,13 @@
           <td><%= f.select :play_style, options_for_select( Player.play_styles_i18n.invert, selected: params.dig( 'player', 'play_style' ) ), {}, { class: "form-control" } %></td>
         </tr>
       </table>
-      <div class="form-group text-center">
-        <div class="actions">
-          <%= f.submit "確定する", class: "btn btn-primary" %>
-      <% end %>
-
-        <%= link_to "退会する", public_players_confirm_path, class: "btn btn-danger btn-sm text-white p-2" %>
+        <div>
+          <%= f.submit "確定する", class: "btn btn-primary form-control my-3" %>
+        </div>
+    <% end %>
+        
+        <div>
+          <%= link_to "退会する", public_players_confirm_path, class: "btn btn-danger btn-sm text-white form-control p-2" %>
         </div>
       </div>
     </div>
