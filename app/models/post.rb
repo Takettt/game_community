@@ -16,22 +16,16 @@ class Post < ApplicationRecord
 
   def self.postlooks(search, word)
     if search == "perfect_match"
-      @post = Post.where("game_name LIKE? OR participate_number LIKE? OR start_time LIKE? OR ending_time LIKE?OR today_tension LIKE?","%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%")
+      @post = Post.includes(:player).where("game_name LIKE? OR participate_number LIKE? OR start_time LIKE? OR ending_time LIKE?OR today_tension LIKE?","%#{word}%","%#{word}%","%#{word}%","%#{word}%","%#{word}%").or(Post.includes(:player).where({players: {nickname: word}}))
     elsif search == "forward_match"
-      @post = Post.where("game_name LIKE? OR participate_number LIKE? OR start_time LIKE? OR ending_time LIKE?OR today_tension LIKE?","%#{word}%", "%#{word}%","%#{word}%","%#{word}%","%#{word}%")
+      @post = Post.joins(:player).where("game_name LIKE? OR participate_number LIKE? OR start_time LIKE? OR ending_time LIKE? OR today_tension LIKE?","#{word}%", "#{word}%","#{word}%","#{word}%","#{word}%").or(Post.joins(:player).where("players.nickname LIKE ?", "%#{word}%"))
     elsif search == "backward_match"
-      @post = Post.where("game_name LIKE? OR participate_number LIKE? OR start_time LIKE? OR ending_time LIKE?ORtoday_tension LIKE?","%#{word}%", "%#{word}%","%#{word}%","%#{word}%","%#{word}%")
+      @post = Post.joins(:player).where("game_name LIKE? OR participate_number LIKE? OR start_time LIKE? OR ending_time LIKE? OR today_tension LIKE?","%#{word}", "%#{word}","%#{word}","%#{word}","%#{word}").or(Post.joins(:player).where("players.nickname LIKE ?", "%#{word}%"))
     elsif search == "partial_match"
-      @post = Post.where("game_name LIKE? OR participate_number LIKE? OR start_time LIKE? OR ending_time LIKE?OR today_tension LIKE?","%#{word}%", "%#{word}%","%#{word}%","%#{word}%","%#{word}%")
+      @post = Post.joins(:player).where("game_name LIKE ? OR participate_number LIKE ? OR start_time LIKE ? OR ending_time LIKE ? OR today_tension LIKE ?", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%", "%#{word}%").or(Post.joins(:player).where("players.nickname LIKE ?", "%#{word}%"))
     else
       @post = Post.all
     end
-  end
-
-  def self.postlooks(search, word)
-    # Player情報の取得
-    player_id = Player.where(nickname: word)[0].id
-    @posts = Post.where(player_id: player_id)
   end
 
   def self.postlooks_tag(search_tag, word_tag)

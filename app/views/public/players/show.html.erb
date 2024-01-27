@@ -1,9 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto">
+    <div class="col-7 mx-auto">
       <h1 class="d-flex justify-content-center mt-5 mb-5"><%= @player.nickname %>さんのページ</h1>
-
-      <table class='table  table-inverse'>
+      <table class="table table">
         <tr class="table-light">
           <th><% if @player.profile_image.attached? %>
                 <%= image_tag @player.profile_image,size:"100x100" %>

@@ -6,11 +6,11 @@ ja:
         kill_move: "キルムーブ"
         rank_priority: "順位優先"
         hide: "ハイド"
-        
+
       search:
         player: "プレイヤー"
         post: "投稿"
-        
+
       search_select:
         perfect_match: "完全一致"
         forward_match: "前方一致"
@@ -29,4 +29,14 @@ ja:
         usually: "普通"
         tired: "少し疲れた"
 
-    
+  activerecord:
+    attributes:
+      post:
+        game_name: ゲーム名
+        participate_number: 募集人数
+        start_time: 始める時間
+        ending_time: 終わる時間
+        content: ひとこと
+      group:
+        name: グループ名
+        introduction: 紹介文

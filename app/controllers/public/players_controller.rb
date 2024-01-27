@@ -21,9 +21,8 @@ class Public::PlayersController < ApplicationController
   end
 
   def favorites
-    @player = Player.find(params[:id])
-    @player_favorite = Favorite.where(player_id: @player.id).pluck(:post_id)
-    @favorite_posts = Post.find(@player_favorite)
+    player = Player.find(params[:id])
+    @favorite_posts = player.favorite_posts
   end
 
   def confirm

@@ -66,7 +66,7 @@
             <td><%= comment.player.nickname %></td>
             <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= comment.thought %></td>
-            <td><% if comment.player == current_player %>
+            <td><% if comment.player == crrent_player %>
                 <%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, data: { confirm: "本当に削除しますか？"} %><br>
             <% end %>
             </td>
