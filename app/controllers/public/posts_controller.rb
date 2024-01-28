@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_player!
   before_action :is_matching_login_player, only: [:edit, :update, :destroy]
-  
+
   def new
     @post = Post.new
   end
@@ -68,8 +68,8 @@ class Public::PostsController < ApplicationController
         redirect_to public_top_path
       end
   end
-  
+
   def post_params
-     params.require(:post).permit(:game_name, :participate_number, :start_time, :ending_time, :today_tension, :content, :posting_option )
+     params.require(:post).permit(:game_name, :participate_number, :start_time, :ending_time, :today_tension, :content, :posting_option, :game_genre )
   end
 end

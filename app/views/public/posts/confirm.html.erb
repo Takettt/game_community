@@ -3,25 +3,30 @@
     <div class='col-md-12 mx-auto'>
     <h1 class="d-flex justify-content-center mt-5 mb-5">確認画面</h1>
     <%= form_with model: @post, url:public_posts_path, method: :post, class: 'post_confirm' do |f| %>
-    <table class='table table-borderless'>
+    <table class='table table-borderless bg-white'>
       <tr>
         <th>ゲーム名</th>
-        <td><%= f.text_field :game_name ,value: @post.game_name, readonly: true, class:'form-control' %></td>
+        <td><%= f.text_field :game_name ,value: @post.game_name, readonly: true, class:'form-control bg-white' %></td>
       </tr>
-    
+      
+      <tr>
+        <th>ゲームのジャンル</th>
+        <td><%= f.text_field :game_genre, value: @post.game_genre, readonly: true, class:'form-control bg-white' %></td>
+      </tr>
+      
       <tr>
         <th>募集人数</th>
-        <td><%= f.text_field :participate_number, valule: @post.participate_number, readonly: true, class:'form-control' %></td>
+        <td><%= f.text_field :participate_number, valule: @post.participate_number, readonly: true, class:'form-control bg-white' %></td>
       </tr>
     
       <tr>
         <th>始める時間</th>
-        <td><%= f.text_field :start_time, value: @post.start_time.strftime('%Y/%m/%d/%H:%M'), readonly: true, class:'form-control' %></td>
+        <td><%= f.text_field :start_time, value: @post.start_time.strftime('%Y/%m/%d/%H:%M'), readonly: true, class:'form-control bg-white' %></td>
       </tr>
     
       <tr>
         <th>終わる時間</th>
-        <td><%= f.text_field :ending_time, value: @post.ending_time.strftime('%Y/%m/%d/%H:%M'), readonly: true, class:'form-control' %></td>
+        <td><%= f.text_field :ending_time, value: @post.ending_time.strftime('%Y/%m/%d/%H:%M'), readonly: true, class:'form-control bg-white' %></td>
       </tr>
     
       <tr>
@@ -31,7 +36,7 @@
     
       <tr>
         <th>ひとこと</th>
-        <td><%= f.text_field :content, value:  @post.content, readonly: true, class:'form-control' %></td>
+        <td><%= f.text_field :content, value:  @post.content, readonly: true, class:'form-control bg-white' %></td>
       </tr>
     </table>
 
