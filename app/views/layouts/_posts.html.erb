@@ -1,0 +1,19 @@
+<% if hover %>
+  <table class='table table-hover'>
+<% else %>
+  <table class='table '>
+<% end %>
+  <%= render "layouts/thead" %>
+    <% @posts.each do |post| %>
+      <tr onclick='window.location="<%= public_post_path(post) %>"' role="link", class="table-light">
+        <td><%= post.player.nickname %></td>
+        <td><%= post.game_name %></td>
+        <td><%= post.game_genre %></td>
+        <td><%= post.participate_number %>人</td>
+        <td><%= post.start_time.strftime('%m/%d/%H:%M') %></td>
+        <td><%= post.ending_time.strftime('%m/%d/%H:%M') %></td>
+        <td><%= post.today_tension_i18n %></td>
+        <td><%= link_to post.content,public_post_path(post) %></td>
+      </tr>
+    <% end %>
+</table>

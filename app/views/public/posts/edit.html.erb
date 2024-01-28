@@ -1,37 +1,43 @@
-<h1 class="d-flex justify-content-center mt-5 mb-5">募集の編集ページ</h1>
+<h1 class="text-center mt-5 mb-5">募集の編集ページ</h1>
+<div class="container">
+  <div class="row">
+    <div class='col-8 mx-auto'>
 
-<%= form_with model: @post, url:public_posts_information, method: :patch, class: 'post_edit' do |f| %>
-<table>
-  <tr>
-    <th>ゲーム名</th>
-    <td><%= f.text_field :game_name ,value: @post.game_name  %></td>
-  </tr>
+      <%= form_with model: @post, url:public_post_path, method: :patch do |f| %>
+      <table class='table'>
+        <tr>
+          <th>ゲーム名</th>
+          <td><%= f.text_field :game_name ,value: @post.game_name, class:"form-control" %></td>
+        </tr>
 
-  <tr>
-    <th>募集人数</th>
-    <td><%= f.text_field :participate_number, valule: @post.participate_number %></td>
-  </tr>
+        <tr>
+          <th>募集人数</th>
+          <td><%= f.text_field :participate_number, valule: @post.participate_number, class:"form-control" %></td>
+        </tr>
 
-  <tr>
-    <th>始める時間</th>
-    <td><%= f.text_field :start_time, value: @post.start_time %></td>
-  </tr>
+        <tr>
+          <th>始める時間</th>
+          <td><%= f.text_field :start_time, value: @post.start_time.strftime('%Y/%m/%d %H:%M'), class:"form-control" %></td>
+        </tr>
 
-  <tr>
-    <th>終わる時間</th>
-    <td><%= f.text_field :ending_time, valule: @post.ending_time %></td>
-  </tr>
+        <tr>
+          <th>終わる時間</th>
+          <td><%= f.text_field :ending_time, value: @post.ending_time.strftime('%Y/%m/%d %H:%M'), class:"form-control" %></td>
+        </tr>
 
-  <tr>
-    <th>今日のテンション</th>
-    <td><%= f.text_field :today_tension, value: @post.today_tension %></td>
-  </tr>
+        <tr>
+          <th>今日のテンション</th>
+          <td><%= f.select :today_tension, options_for_select(Post.today_tensions_i18n.invert, selected: params.dig('post', 'today_tension') ), {}, { class: "form-control" } %></td>
+        </tr>
 
-  <tr>
-    <th>ひとこと</th>
-    <td><%= f.text_field :content, value:  @post.content %></td>
-  </tr>
-</table>
+        <tr>
+          <th>ひとこと</th>
+          <td><%= f.text_field :content, value:  @post.content, class:"form-control" %></td>
+        </tr>
+      </table>
 
- <%= f.submit "確定", class:'btn btn-info form-control mt-5 mb-5' %>
-<% end %>
+        <%= f.submit "確定", class:'btn btn-info form-control mt-5 mb-5' %>
+      <% end %>
+    </div>
+  </div>
+</div>

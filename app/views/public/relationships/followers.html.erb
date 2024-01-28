@@ -3,7 +3,8 @@
     <div class="col-6 mx-auto">
       <h2>フォロワー一覧</h2>
       <% if @players.exists? %>
-      <table class='table table-hover table-inverse'>
+      <table class='table table-hover'>
+        <tbody onclick='window.location="<%= public_player_path(player) %>"' role="link">
         <tr class="table-light">
           <th>ニックネーム</th>
           <th>プラットフォーム</th>

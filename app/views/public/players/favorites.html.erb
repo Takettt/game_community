@@ -3,18 +3,20 @@
     <div class="col-12 mx-auto">
       <h1 class="d-flex justify-content-center mt-5 mb-5">いいねした投稿一覧</h1>
         <table class='table table-hover table-inverse'>
-             <tr class="table-light">
-                <th>募集者名</th>
-                <th>ゲーム名</th>
-                <th>ひとこと</th>
-             </tr>
-            <% @favorite_posts.each do |post| %>
-              <tr class="table-light">
-                <td><%= post.player.nickname %></td>
-                <td><%= post.game_name %></td>
-                <td><%= link_to post.content, public_post_path(post) %></td>
-              </tr>
-            <% end %>
+          <tr class="table-light">
+            <th>募集者名</th>
+            <th>ゲーム名</th>
+            <th>ひとこと</th>
+          </tr>
+          <% @favorite_posts.each do |post| %>
+          <tbody onclick='window.location="<%= public_post_path(post) %>"' role="link">
+          <tr class="table-light">
+            <td><%= post.player.nickname %></td>
+            <td><%= post.game_name %></td>
+            <td><%= post.content %></td>
+          </tr>
+          <% end %>
+          </tbody>
         </table>
     </div>
   </div>

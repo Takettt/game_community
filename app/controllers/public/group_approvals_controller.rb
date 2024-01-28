@@ -1,4 +1,6 @@
 class Public::GroupApprovalsController < ApplicationController
+  before_action :authenticate_player!
+  
   def new
     @group = Group.find(params[:group_id])
     @group_approval = current_player.group_approvals.new(group_id: params[:group_id])

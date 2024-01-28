@@ -24,51 +24,21 @@
                 <td><%= player.play_style_i18n %></td>
               </tr>
             </tbody>
-        </table>
+          </table>
 
           <% if current_player != player %>
-            <div class="d-flex justify-content-center">
-              <% if current_player.following?(player) %>
-                <%= link_to "フォロー外す",public_player_relationships_path(player.id), method: :delete, class: "btn btn-info btn-block text-center mb-5" %>
-              <% else %>
-                <%= link_to "フォローする",public_player_relationships_path(player.id), method: :post, class: "btn btn-success btn-block text-center mb-5" %>
-              <% end %>
-            </div>
+            <% if current_player.following?(player) %>
+              <%= link_to "フォロー外す",public_player_relationships_path(player.id), method: :delete, class: "btn btn-info btn-block text-center mb-5" %>
+            <% else %>
+              <%= link_to "フォローする",public_player_relationships_path(player.id), method: :post, class: "btn btn-success btn-block text-center mb-5" %>
+            <% end %>
           <% end %>
         <% end %>
+        <% else %>
 
-
-          <% else %>
             <!--検索対象モデルがplayerではない時(= 検索対象モデルがBookの時) -->
-        <table class='table table-hover'>
-            <tbody class="table table-hover table-inverse">
-              <thead>
-                <tr class="table-light">
-                  <th class="col-1">募集者名</th>
-                  <th class="col-1">ゲーム名</th>
-                  <th class="col-1">ジャンル</th>
-                  <th class="col-1">募集人数</th>
-                  <th class="col-1">始める時間</th>
-                  <th class="col-1">終わる時間</th>
-                  <th class="col-2">今日のテンション</th>
-                  <th class="col-4">ひとこと</th>
-                </tr>
-              </thead>
-              <% @posts.each do |post| %>
-                <tr onclick='window.location="<%= public_post_path(post) %>"' role="link", class="table-light">
-                  <td><%= post.player.nickname %></td>
-                  <td><%= post.game_name %></td>
-                  <td><%= post.game_genre %></td>
-                  <td><%= post.participate_number %>人</td>
-                  <td><%= post.start_time.strftime('%m/%d/%H:%M') %></td>
-                  <td><%= post.ending_time.strftime('%m/%d/%H:%M') %></td>
-                  <td><%= post.today_tension_i18n %></td>
-                  <td><%= link_to post.content,public_post_path(post) %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          <% end %>
-        </table>
+        <%= render "layouts/posts", posts: @posts, hover: true %>
+        <% end %>
     </div>
   </div>
 </div>

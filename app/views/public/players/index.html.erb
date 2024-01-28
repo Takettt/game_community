@@ -1,34 +1,34 @@
 <h1 class="d-flex justify-content-center mt-5 mb-5">プレイヤー一覧</h1>
-<% @players.each do |player| %>
-<table>
-  <tr>
-    <th>プレイヤーネーム</th>
-    <td><%= player.last_name + player.first_name %></td>
-  </tr>
-  <tr>
-    <th>ニックネーム</th>
-    <td><%= player.nickname %></td>
-  </tr>
-  <tr>
-    <th>プラットフォーム</th>
-    <td><%= player.platform %></td>
-  </tr>
-  <tr>
-    <th>はまっているゲーム</th>
-    <td><%= player.addicted_game %></td>
-  </tr>
-  <tr>
-    <th>プレイスタイル</th>
-    <td><%= player.play_style %></td>
-  </tr>
-  <tr>
- <% if current_player != player %>
-  <% if current_player.following?(player) %>
-    <td><%= link_to "フォロー外す",public_player_relationships_path(player.id), method: :delete, class: "btn btn-info" %></td>
-  <% else %>
-    <td><%= link_to "フォローする",public_player_relationships_path(player.id), method: :post, class: "btn btn-success" %></td>
+  <% @players.each do |player| %>
+  <table>
+    <tr>
+      <th>プレイヤーネーム</th>
+      <td><%= player.last_name + player.first_name %></td>
+    </tr>
+    <tr>
+      <th>ニックネーム</th>
+      <td><%= player.nickname %></td>
+    </tr>
+    <tr>
+      <th>プラットフォーム</th>
+      <td><%= player.platform %></td>
+    </tr>
+    <tr>
+      <th>はまっているゲーム</th>
+      <td><%= player.addicted_game %></td>
+    </tr>
+    <tr>
+      <th>プレイスタイル</th>
+      <td><%= player.play_style %></td>
+    </tr>
+    <tr>
+      <% if current_player != player %>
+        <% if current_player.following?(player) %>
+          <td><%= link_to "フォロー外す",public_player_relationships_path(player.id), method: :delete, class: "btn btn-info" %></td>
+        <% else %>
+          <td><%= link_to "フォローする",public_player_relationships_path(player.id), method: :post, class: "btn btn-success" %></td>
+        <% end %>
+      <% end %>
+    </tr>
   <% end %>
-<% end %>
-</tr>
-<% end %>
-</table>
+  </table>

@@ -1,4 +1,5 @@
 class Public::GroupPlayersController < ApplicationController
+  before_action :authenticate_player!
 
   def create
     @group = Group.find(params[:group_id])

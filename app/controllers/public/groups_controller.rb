@@ -1,7 +1,8 @@
 class Public::GroupsController < ApplicationController
+  before_action :authenticate_player!
 
   before_action :authenticate_player!
-  before_action :ensure_correct_player, only: [:edit, :update, :approval]
+  before_action :is_matching_login_player, only: [:edit, :update, :destroy, :approval]
 
   def new
     @group = Group.new
@@ -53,14 +54,16 @@ class Public::GroupsController < ApplicationController
 
   private
 
+  def is_matching_login_player
+    @group = Group.find_by(id: params[:id])
+      unless @group.owner_id == current_player.id
+        redirect_to public_top_path
+      end
+  end
+
   def group_params
     params.require(:group).permit(:name, :introduction)
   end
 
-  def ensure_correct_player
-    @group = Group.find(params[:id])
-    unless @group.owner_id == current_player.id
-       redirect_to public_groups_path
-    end
-  end
+
 end

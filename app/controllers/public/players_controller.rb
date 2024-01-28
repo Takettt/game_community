@@ -1,4 +1,7 @@
 class Public::PlayersController < ApplicationController
+  before_action :authenticate_player!
+  before_action :is_matching_login_player, only: [:edit, :update, :delete]
+
   def show
     @player = Player.find(params[:id])
   end
@@ -23,6 +26,7 @@ class Public::PlayersController < ApplicationController
   def favorites
     player = Player.find(params[:id])
     @favorite_posts = player.favorite_posts
+    @post = Post.find(params[:id])
   end
 
   def confirm
@@ -37,7 +41,14 @@ class Public::PlayersController < ApplicationController
   end
 
   private
-   def player_params
-     params.require(:player).permit(:last_name, :first_name, :nickname, :email, :platform, :addicted_game, :play_style, :profile_image)
-   end
+    def is_matching_login_player
+      @player = Player.find_by(id: params[:id])
+        if @player != current_player
+          redirect_to public_top_path
+        end
+    end
+
+    def player_params
+      params.require(:player).permit(:last_name, :first_name, :nickname, :email, :platform, :addicted_game, :play_style, :profile_image)
+    end
 end

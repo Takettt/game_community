@@ -1,4 +1,6 @@
 class Public::SearchesController < ApplicationController
+  before_action :authenticate_player!
+  
   def search
     @range = params[:range]
 
