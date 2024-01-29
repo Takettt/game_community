@@ -2,8 +2,10 @@
 <div class="container">
   <div class="row">
     <div class='col-8 mx-auto'>
-
+      
       <%= form_with model: @post, url:public_post_path, method: :patch do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
       <table class='table'>
         <tr>
           <th>ゲーム名</th>

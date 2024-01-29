@@ -4,6 +4,7 @@
     <h1 class="d-flex justify-content-center mt-5 mb-5">プレイヤー編集</h1>
 
     <%= form_with model: @player, url: public_player_path, method: :patch do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       <table class='table'>
         <tr class="table-light">
           <th>プロフィール画像の変更</th>
