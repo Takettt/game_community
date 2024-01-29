@@ -37,8 +37,12 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
+    if params[:id] == "confirm"
+      redirect_to new_public_post_path
+    else
+      @post = Post.find(params[:id])
+      @comment = Comment.new
+    end
   end
 
   def edit

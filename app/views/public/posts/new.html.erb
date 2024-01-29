@@ -11,7 +11,7 @@
           </tr>
   
           <tr>
-            <th>ゲームのジャンル</th>
+            <th>ジャンル</th>
             <td><%= f.select :game_genre, options_for_select( Post.game_genres_i18n.invert, selected: params.dig( 'post', 'game_genre' ) ), {}, { class: "form-control" } %></td>
           </tr>
   
