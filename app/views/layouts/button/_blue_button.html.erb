@@ -1,5 +1,9 @@
-<% if my3 %>
+<% if blue_btn == "my3" %>
   <%= f.submit text, class: "btn btn-primary form-control my-3" %>
-<% else %> 
+<% elsif blue_btn == "my1" %> 
   <%= f.submit text, class: "btn btn-primary form-control my-1" %>
+<% elsif blue_btn == "post-confirm" %>
+  <%= f.submit "確定", class:'form-control btn btn-primary  mt-5 mb-5' %>
+<% else %>
+  <%= f.submit text, class: "btn btn-primary mt-4 form-control" %>
 <% end %>

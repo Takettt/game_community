@@ -13,7 +13,7 @@
             <%= f.select :search, options_for_select( Player.search_selects_i18n.invert, selected: params.dig( 'player', 'search_select' ) ), {}, { class: "form-control" } %>
           </div>
           <div class="col-md-2 my-1">
-            <%= render "layouts/button/blue_button",f: f, text: "検索", my3: false %>
+            <%= render "layouts/button/blue_button",f: f, text: "検索", blue_btn: "my1" %>
           </div>
         </div>
       <% end %>
@@ -24,7 +24,7 @@
             <%= f.text_field :word_tag, placeholder: "ジャンルで検索", class: "form-control" %>
           </div>
           <div class="col-md-2 ">
-            <%= render "layouts/button/blue_button",f: f, text: "タグ検索", my3: false %>
+            <%= render "layouts/button/blue_button",f: f, text: "タグ検索", blue_btn: "my1" %>
           </div>
         </div>
       <% end %>

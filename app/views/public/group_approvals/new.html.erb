@@ -6,7 +6,7 @@
         <%= f.text_field :group_password, placeholder:"こちらへ入力", class: 'form-control'%>
         <div class="form-group text-center">
           <div class="actions">
-            <%= f.submit "申請", class: "btn btn-primary mt-4 form-control" %>
+            <%= render "layouts/button/blue_button",f: f, text: "申請", blue_btn: false %>
           </div>
         </div>
     <% end %>
