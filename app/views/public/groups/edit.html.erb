@@ -14,13 +14,13 @@
             <%= f.text_area :introduction, class: 'form-control' %>
          </div>
 
-         <div class="mt-5">
+         <div class="my-4">
             <%= f.label :グループ画像 %>
             <%= f.file_field :group_image, class: "form-control-file" , accept: "image/*" %>
          </div>
 
          <div>
-            <%= f.submit "編集確定", class: 'mt-5 btn btn-primary form-control' %>
+            <%= render "layouts/button/blue_button",f: f, text: "編集確定", my3: true %>
          </div>
         <% end %>
    </div>

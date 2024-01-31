@@ -26,11 +26,11 @@
             <td>
               <% if @group.is_owned_by?(current_player) %>
               <% elsif @group.group_players.exists?(player_id: current_player.id) %>
-              　<%= link_to 'グループ退出', public_group_group_players_path(@group), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当にグループを退出しますか？" } %>
+              　<%= render "layouts/button/red_button", red_btn: "group-exit", group: @group %>
               <% elsif @group.group_approvals.exists?(player_id: current_player.id) %>
-                <%= link_to '申請取消', public_group_group_approval_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+                <%= render "layouts/button/red_button", red_btn: "group-approval-cancel", group: @group %>
               <% else %>
-              　<%= link_to '加入申請', new_public_group_group_approval_path(@group), class: "btn btn-sm btn-success" %>
+              　<%= render "layouts/button/green_button", green_btn: "group-apply", group: @group %>
               <% end %>
             </td>
           </tr>

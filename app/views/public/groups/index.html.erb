@@ -23,7 +23,7 @@
               </td>
               <td><%= group.name %></td>
               <td><%= group.introduction %></td>
-              <td><%= link_to 'グループ詳細', public_group_path(group), class: "group_#{group.id} btn btn-sm btn-success" %> </td>
+              <td><%= render "layouts/button/green_button", green_btn: "false", group: group %> </td>
             </tr>
           <% end %>
         </tbody>

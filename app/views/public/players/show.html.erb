@@ -39,13 +39,13 @@
           </td>
         </tr>
       </table>
-    
+
       <% if @player.nickname == current_player.nickname %>
         <div>
-          <%= link_to "プロフィールを編集する", edit_public_player_path(@player.id), class: "btn btn-success mt-3 form-control" %>
+          <%= render "layouts/button/green_button", green_btn: "player-edit", player: @player %>
         </div>
         <div>
-          <%= link_to "いいね一覧", favorites_public_player_path(@player.id), class: "btn btn-primary mt-3 form-control" %>
+          <%= render "layouts/button/blue_index_favorite_button", text: "いいね一覧", player: @player %>
         </div>
       <% end %>
     </div>

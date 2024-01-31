@@ -26,7 +26,6 @@ class Public::PlayersController < ApplicationController
   def favorites
     player = Player.find(params[:id])
     @favorite_posts = player.favorite_posts
-    @post = Post.find(params[:id])
   end
 
   def confirm

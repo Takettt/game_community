@@ -28,12 +28,12 @@
         </tr>
       </table>
         <div>
-          <%= render "layouts/blue_button",f: f, text: "確定する", my3: true %>
+          <%= render "layouts/button/blue_button",f: f, text: "確定する", my3: true %>
         </div>
     <% end %>
         
         <div>
-          <%= link_to "退会する", public_players_confirm_path, class: "btn btn-danger btn-sm text-white form-control p-2" %>
+          <%= render "layouts/button/red_button", red_btn: "player-confirm" %>
         </div>
       </div>
     </div>

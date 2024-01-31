@@ -7,7 +7,7 @@
           <table class='table table-borderless'>
           <tr>
             <th>ゲーム名</th>
-            <td><%= f.text_field :game_name, autofocus:true, class: 'form-control' %></td>
+            <td><%= f.text_field :game_name, autofocus:true, class: 'form-control ' %></td>
           </tr>
   
           <tr>
@@ -44,7 +44,7 @@
             <td><%= f.text_area :content, class: 'form-control', rows: 5, placeholder: "例）雑談しながら楽しみましょう！" %></td>
           </tr>
         </table>
-        <%= f.submit "確認画面へ", class:'btn btn-info form-control mt-5 mb-5' %>
+        <%= render "layouts/button/light_blue_button",f: f, text: "確認画面へ" %>
       <% end %>
     </div>
   </div>

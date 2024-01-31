@@ -1,0 +1,11 @@
+<% if green_btn == "post-edit" %>
+  <%= link_to "投稿を編集する", edit_public_post_path(post), class:'btn bg-success form-control text-white mb-2' %>
+  <% elsif green_btn == "player-edit" %>
+    <%= link_to "プロフィールを編集する", edit_public_player_path(player), class: "btn btn-success form-control mt-5" %>
+  <% elsif green_btn == "group-apply" %>
+    <%= link_to '加入申請', new_public_group_group_approval_path(group), class: "btn btn-sm btn-success" %>
+  <% elsif green_btn == "group-approval" %>
+    <%= link_to '承認', public_group_group_players_path(group, approval_id: approval.first.id, status:"approval"), method: :post, class: "btn btn-sm btn-success" %>
+  <% else %>
+    <%= link_to 'グループ詳細', public_group_path(group), class: "group_#{group.id} btn btn-sm btn-success" %>
+  <% end %>

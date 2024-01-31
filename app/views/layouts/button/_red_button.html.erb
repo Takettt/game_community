@@ -1,0 +1,13 @@
+<% if red_btn == "post-delete" %>
+  <%= link_to "投稿を削除する", public_post_path(post), method: :delete, data: { confirm: "本当に削除しますか？"} ,class:'btn bg-danger form-control text-white' %>
+<% elsif red_btn == "player-confirm" %>
+  <%= link_to "退会する", public_players_confirm_path, class: "btn btn-danger btn-sm text-white form-control p-2" %>
+<%  elsif red_btn == "group-approval-cancel" %>
+  <%= link_to '申請取消', public_group_group_approval_path(group), method: :delete, class: "btn btn-sm btn-danger" %>
+<%  elsif red_btn == "group-approval-reject" %>
+   <%= link_to '却下', reject_public_group_group_approval_path(group, approval_id: approval.first.id,status:"rejected"), method: :delete, class: "btn btn-sm btn-danger" %>
+<%  elsif red_btn == "group-exit" %>
+  <%= link_to 'グループ退出', public_group_group_players_path(group), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: "本当にグループを退出しますか？" } %>
+<% else %>
+  <%= link_to "退会する", public_players_leave_path(player.id), method: :patch, :class => "btn btn-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
+<% end %>
