@@ -13,12 +13,7 @@ class Public::GroupApprovalsController < ApplicationController
     redirect_to public_group_path(@group), notice: "グループへ参加申請をしました"
   end
 
-  # def update
-  #   @group = Group.find(params[:group_id])
-  #   approval = GroupApproval.find(params[:approval_id])
-  #   approval.update(status:params[:status])
-  #   redirect_to public_group_path(@group), notice: ""
-  # end
+  
 
   def destroy
     @group = Group.find(params[:group_id])
